@@ -1,1 +1,1 @@
-We're working on rentals.
+We're working on rentals and learning git.
