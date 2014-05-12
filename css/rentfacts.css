@@ -49,6 +49,9 @@ h1 {
   vertical-align: middle;
   padding-top: 4px;
 }
+.energy-chart {
+  width:100%;
+}
 .energy-chart rect.bar {
   fill: rgb(74, 179, 236);
 }
@@ -66,8 +69,6 @@ h1 {
   stroke: none;
   shape-rendering: crispEdges;
 }
-
-
 
 .table > thead > tr > th {
   border-bottom:none;
