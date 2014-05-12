@@ -1,17 +1,19 @@
 
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 480 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom;
 
-var x = d3.scale.linear()
-    .range([0, width]);
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
 var y = d3.scale.linear()
     .range([height, 0]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("bottom")
+    .tickFormat(function(d) { return d[0].toUpperCase(); });
 
 var svg = d3.select(".energy-chart")
     .attr("width", width + margin.left + margin.right)
@@ -20,10 +22,8 @@ var svg = d3.select(".energy-chart")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.tsv("data/energy.tsv", type, function(error, data) {
-  x.domain(["J", "f", "m", "a", "j", "j", "a", "s", "o", "n", "d"]);
+  x.domain(data.map(function(d) { return d.month; }));
   y.domain([0, d3.max(data, function(d) { return d.amount; })]);
-
-  barWidth = width / data.length;
 
   svg.append("g")
       .attr("class", "x axis")
@@ -34,10 +34,20 @@ d3.tsv("data/energy.tsv", type, function(error, data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d, i) { return i * barWidth; })
-      .attr("width", barWidth - 10)
+      .attr("x", function(d) { return x(d.month); })
+      .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.amount); })
       .attr("height", function(d) { return height - y(d.amount); });
+
+  svg.selectAll(".negative-space")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "negative-space")
+      .attr("x", function (d) { return x(d.month); })
+      .attr("width", x.rangeBand())
+      .attr("y", 0)
+      .attr("height", function(d) { return y(d.amount); });
+;
 
 });
 
