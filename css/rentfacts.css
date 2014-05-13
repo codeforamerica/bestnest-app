@@ -39,3 +39,56 @@ h1 {
   font-size:1.6em;
   margin-right:4px;
 }
+.data-summary .glyphicon {
+  font-weight: 200;
+  border-radius: 30px;
+  border: 3px solid #4AB3EC;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 4px;
+}
+.energy-chart {
+  width:100%;
+}
+.energy-chart rect.bar {
+  fill: rgb(74, 179, 236);
+}
+.energy-chart rect.negative-space {
+  fill: #ccc;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+
+.table > thead > tr > th {
+  border-bottom:none;
+}
+.table > tbody > tr > td {
+  border-top:none;
+}
+.table > tbody > tr:last-child {
+  border-bottom:none;
+}
+.table > tbody > tr {
+  border-bottom:1px solid #ccc;
+}
+.table > tbody > tr > td:first-child {
+  border-right:1px solid #ccc;
+}
+.table .amount {
+  color:rgb(74, 179, 236);
+}
+.table tbody tr:first-child em {
+  font-size:1.3em;
+  font-style:normal;
+}
