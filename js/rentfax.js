@@ -1,5 +1,5 @@
 var margin = 20,
-    width = parseInt(d3.select(".energy-chart").style("width")) - margin*2,
+    width = parseInt(d3.select(".energy-chart").style("width")),
     height = maintainAspectRatio(width);
 
 var x = d3.scale.ordinal()
@@ -17,7 +17,7 @@ var svg = d3.select(".energy-chart")
     .attr("width", width + margin*2)
     .attr("height", height + margin*2)
   .append("g")
-    .attr("transform", "translate(" + margin + "," + margin + ")");
+    .attr("transform", "translate(0," + margin + ")");
 
 d3.tsv("data/energy.tsv", type, function(error, data) {
   x.domain(data.map(function(d) { return d.month; }));

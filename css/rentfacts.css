@@ -26,18 +26,23 @@ body {
 h1 {
   font-size:1.3em;
 }
-
+h2 {
+  font-size:1.1em;
+}
 .data-summary {
-  padding-top:14px;
-  padding-bottom:14px;
+  min-height:55px;
 }
 .data-summary a, .data-summary a:visited {
   color: black;
   text-decoration:none;
 }
-.data-summary span.data-title {
+.data-summary strong {
   font-size:1.6em;
+  font-weight:normal;
   margin-right:4px;
+}
+h2, .data-summary .data-title, .data-summary .data-description {
+  color:#ccc;
 }
 .data-summary .glyphicon {
   font-weight: 200;
@@ -58,11 +63,10 @@ h1 {
 .energy-chart rect.negative-space {
   fill: #ccc;
 }
-
 .axis text {
   font: 10px sans-serif;
+  fill:#ccc;
 }
-
 .axis path,
 .axis line {
   fill: none;
@@ -87,6 +91,9 @@ h1 {
 }
 .table .amount {
   color:rgb(74, 179, 236);
+}
+.table .energy-type {
+  color:#ccc;
 }
 .table tbody tr:first-child em {
   font-size:1.3em;
