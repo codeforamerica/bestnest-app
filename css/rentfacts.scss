@@ -1,4 +1,6 @@
+
 $primaryColor:rgb(66, 179, 228);
+
 body {
   font-family: 'Open Sans', sans-serif;
   color: rgb(155, 166, 177);
@@ -15,40 +17,63 @@ nav.navbar {
   border-radius:0;
   margin-bottom:0;
 }
-.navbar .container {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-align-items:center;
-  align-items:center;
-
-  -webkit-justify-content:space-between;
-  justify-content:space-between;
-  width:100%;
-
-  min-height:50px;
-  width:100%;
-}
-.navbar .glyphicon {
-  font-size:1.3em;
-}
-.navbar .back {
-  margin-right:auto;
-  position:relative;
-}
-.navbar .back-label {
-  position:absolute;
-  left:25px;
-  top:2px;
-}
-.navbar .title {
-  text-transform:uppercase;
-}
-.navbar .glyphicon-search {
-  margin-left:auto;
+.navbar {
+ .container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
+    align-items:center;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+    width:100%;
+    min-height:50px;
+    width:100%;
+  }
+  .glyphicon {
+    font-size:1.3em;
+  }
+  .back {
+    margin-right:auto;
+    position:relative;
+  }
+  .back-label {
+    position:absolute;
+    left:25px;
+    top:2px;
+  }
+  .title {
+    text-transform:uppercase;
+  }
+  .glyphicon-search {
+    margin-left:auto;
+  }
+  input[type="text"] {
+    background-color:darken($primaryColor, 20%);
+    border:0;
+    color:white;
+    line-height:2em;
+    padding-left:20px;
+    padding-right:20px;
+    width:100%;
+  }
+  input[type="text"]::-webkit-input-placeholder {
+    color:white;
+  }
+  .twitter-typeahead, .tt-dropdown-menu {
+    width:100%;
+  }
+  .tt-dropdown-menu {
+    background-color:darken($primaryColor, 20%);
+  }
+  .tt-suggestion {
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+  }
 }
 h1 {
   font-weight:600;
@@ -90,7 +115,6 @@ h1, h2, h3 {
   width:100%;
 }
 .row button {
-  background-color:transparent;
   border:1px solid $primaryColor;
   border-radius:4px;
   float:right;
@@ -98,6 +122,21 @@ h1, h2, h3 {
   padding-right:14px;
   padding-top:6px;
   padding-bottom:6px;
+}
+
+.row button.save {
+  background-color:$primaryColor;
+  color:white;
+}
+.row button.save:before {
+  content: "Saved";
+}
+.row button.save.deactivated {
+  background-color:transparent;
+  color:$primaryColor;
+}
+.row button.save.deactivated:before {
+  content: "Save";
 }
 .row ul {
   list-style-type:none;
@@ -116,7 +155,9 @@ h1, h2, h3 {
   right:8%;
   margin-top:-.5em;
 }
-
+.row #search-map {
+  min-height:350px;
+}
 .row p.violation-description {
   margin-top:1em;
 }

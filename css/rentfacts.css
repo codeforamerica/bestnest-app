@@ -27,24 +27,38 @@ nav.navbar {
   width: 100%;
   min-height: 50px;
   width: 100%; }
-
 .navbar .glyphicon {
   font-size: 1.3em; }
-
 .navbar .back {
   margin-right: auto;
   position: relative; }
-
 .navbar .back-label {
   position: absolute;
   left: 25px;
   top: 2px; }
-
 .navbar .title {
   text-transform: uppercase; }
-
 .navbar .glyphicon-search {
   margin-left: auto; }
+.navbar input[type="text"] {
+  background-color: #187ca8;
+  border: 0;
+  color: white;
+  line-height: 2em;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%; }
+.navbar input[type="text"]::-webkit-input-placeholder {
+  color: white; }
+.navbar .twitter-typeahead, .navbar .tt-dropdown-menu {
+  width: 100%; }
+.navbar .tt-dropdown-menu {
+  background-color: #187ca8; }
+.navbar .tt-suggestion {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px; }
 
 h1 {
   font-weight: 600;
@@ -86,7 +100,6 @@ h1, h2, h3 {
   width: 100%; }
 
 .row button {
-  background-color: transparent;
   border: 1px solid #42b3e4;
   border-radius: 4px;
   float: right;
@@ -94,6 +107,20 @@ h1, h2, h3 {
   padding-right: 14px;
   padding-top: 6px;
   padding-bottom: 6px; }
+
+.row button.save {
+  background-color: #42b3e4;
+  color: white; }
+
+.row button.save:before {
+  content: "Saved"; }
+
+.row button.save.deactivated {
+  background-color: transparent;
+  color: #42b3e4; }
+
+.row button.save.deactivated:before {
+  content: "Save"; }
 
 .row ul {
   list-style-type: none;
@@ -111,6 +138,9 @@ h1, h2, h3 {
   top: 50%;
   right: 8%;
   margin-top: -.5em; }
+
+.row #search-map {
+  min-height: 350px; }
 
 .row p.violation-description {
   margin-top: 1em; }
