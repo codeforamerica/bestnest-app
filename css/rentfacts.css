@@ -2,7 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: #9ba6b1; }
 
-.primary-color, .row h1, .row h2, .row span.glyphicon, button {
+.primary-color, .row h1, .row h2, .row h3, .row span.glyphicon, button {
   color: #42b3e4; }
 
 nav {
@@ -59,6 +59,10 @@ nav.navbar {
   padding-bottom: 5px;
   padding-left: 20px;
   padding-right: 20px; }
+
+em {
+  font-weight: 900;
+  font-style: normal; }
 
 h1 {
   font-weight: 600;
@@ -144,3 +148,41 @@ h1, h2, h3 {
 
 .row p.violation-description {
   margin-top: 1em; }
+
+.row table {
+  margin-top: 1em; }
+
+.row table tr:last-child {
+  font-weight: 900; }
+
+.row .table th {
+  color: #42b3e4; }
+
+.row .table > thead > tr > th, .table > tbody > tr > td {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 2px; }
+
+.energy-chart {
+  margin-top: 1em;
+  width: 100%; }
+
+.energy-chart rect.bar {
+  fill: #42b3e4; }
+
+.energy-chart rect.negative-space {
+  fill: #ccc; }
+
+.axis text {
+  fill: #9ba6b1;
+  font: 10px sans-serif; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges; }
+
+.row h3.table-heading-like {
+  font-size: 14px;
+  font-weight: 900; }

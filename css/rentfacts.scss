@@ -1,11 +1,12 @@
 
 $primaryColor:rgb(66, 179, 228);
+$textColor:rgb(155, 166, 177);
 
 body {
   font-family: 'Open Sans', sans-serif;
-  color: rgb(155, 166, 177);
+  color:$textColor;
 }
-.primary-color, .row h1, .row h2, .row span.glyphicon, button {
+.primary-color, .row h1, .row h2, .row h3, .row span.glyphicon, button {
   color:$primaryColor;
 }
 nav {
@@ -74,6 +75,10 @@ nav.navbar {
     padding-left:20px;
     padding-right:20px;
   }
+}
+em {
+  font-weight:900;
+  font-style:normal;
 }
 h1 {
   font-weight:600;
@@ -160,4 +165,42 @@ h1, h2, h3 {
 }
 .row p.violation-description {
   margin-top:1em;
+}
+.row table {
+  margin-top:1em;
+}
+.row table tr:last-child {
+  font-weight:900;
+}
+.row .table th {
+  color: $primaryColor;
+}
+.row .table>thead>tr>th, .table>tbody>tr>td {
+  border-top:0;
+  border-bottom:0;
+  padding:2px;
+}
+.energy-chart {
+  margin-top:1em;
+  width:100%;
+}
+.energy-chart rect.bar {
+  fill: $primaryColor;
+}
+.energy-chart rect.negative-space {
+  fill: #ccc;
+}
+.axis text {
+  fill:$textColor;
+  font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+.row h3.table-heading-like {
+  font-size:14px;
+  font-weight:900;
 }
