@@ -1,4 +1,4 @@
-var margin = 0,
+var margin = 20,
     width = parseInt(d3.select(".energy-chart").style("width")) - margin*2,
     height = maintainAspectRatio(width);
 
@@ -13,22 +13,37 @@ var xAxis = d3.svg.axis()
     .orient("bottom")
     .tickFormat(function(d) { return d[0].toUpperCase(); });
 
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
 var svg = d3.select(".energy-chart")
     .attr("width", width + margin*2)
-    .attr("height", height + 20)
+    .attr("height", height + margin*2)
   .append("g")
-    .attr("transform", "translate(" + margin + "," + margin + ")");
+    .attr("transform", "translate(0," + margin + ")");
+
+var bars = svg.append("g")
+      .attr("class", "bars")
+      .attr("transform", "translate(-"+margin+", 0)")
 
 d3.tsv("data/energy.tsv", type, function(error, data) {
   x.domain(data.map(function(d) { return d.month; }));
   y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+  yAxis.ticks(3);
 
-  svg.selectAll(".negative-space")
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(-"+margin+"," + height + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(" + width + ",0)")
+    .call(yAxis);
+
+  bars.selectAll(".negative-space")
       .data(data)
     .enter().append("rect")
       .attr("class", "negative-space")
@@ -38,7 +53,7 @@ d3.tsv("data/energy.tsv", type, function(error, data) {
       .attr("height", function(d) { return height; }).attr("rx", "2")
       .attr("ry", "2");
 
-  svg.selectAll(".bar")
+  bars.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
@@ -48,7 +63,6 @@ d3.tsv("data/energy.tsv", type, function(error, data) {
       .attr("height", function(d) { return height - y(d.amount); })
       .attr("rx", "2")
       .attr("ry", "2");
-
 
       function resize() {
         var width = parseInt(d3.select(".energy-chart").style("width")),
@@ -60,6 +74,9 @@ d3.tsv("data/energy.tsv", type, function(error, data) {
 
         svg.select('.x.axis')
           .call(xAxis);
+
+        svg.select('.y.axis')
+          .call(yAxis)
 
         svg.selectAll('rect')
           .attr("x", function(d) { return x(d.month); })

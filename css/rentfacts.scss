@@ -200,6 +200,14 @@ h1, h2, h3 {
   stroke: none;
   shape-rendering: crispEdges;
 }
+
+.y.axis line {
+  stroke:black;
+}
+.y.axis .tick:first-child {
+  display:none;
+}
+
 .row h3.table-heading-like {
   font-size:14px;
   font-weight:900;
