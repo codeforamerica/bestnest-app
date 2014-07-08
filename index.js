@@ -1,0 +1,18 @@
+var Router = require('./router')
+var view = require('./view')
+var $ = require('jquery')
+
+$(document).ready(function () {
+
+  view.initialize({root:'#outer'})
+  var router = new Router()
+
+    router.on('route', function (routeName) {
+      console.log('r', routeName)
+      view.show(routeName)
+    })
+
+  router.history.start()
+
+
+})

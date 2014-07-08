@@ -1,0 +1,28 @@
+{
+  "name": "bestnest-app",
+  "version": "1.0.0",
+  "description": "the front end of bestnestapp.com",
+  "main": "index.js",
+  "scripts": {
+    "dev": "watchify index.js -o bundle.js -t brfs --debug -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codeforamerica/bestnest-app.git"
+  },
+  "browserify": {
+    "transforms": [
+      "brfs"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeforamerica/bestnest-app/issues"
+  },
+  "homepage": "https://github.com/codeforamerica/bestnest-app",
+  "dependencies": {
+    "ampersand-router": "^1.0.1"
+  }
+}
