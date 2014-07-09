@@ -1,5 +1,7 @@
 var $ = require('jquery')
 
+var apiClient = require('./api-client')
+
 var viewConstructors = {
   index: require('./views/index'),
   summary: require('./views/summary'),
@@ -9,7 +11,7 @@ var viewConstructors = {
 var viewCache = {
 }
 
-var root
+var rootElement
 
 function getView (viewName) {
   if (viewCache[viewName]) {
@@ -22,7 +24,7 @@ function getView (viewName) {
 
 function initialize (opt) {
   opt = opt || {}
-  root = $(opt.root)
+  rootElement = $(opt.rootElement)
 }
 
 function show(viewName, homeId) {
@@ -32,7 +34,7 @@ function show(viewName, homeId) {
     view.data.home.id = homeId
   }
   view.render()
-  $(root).empty().append(view.el)
+  $(rootElement).empty().append(view.el)
 }
 
 module.exports.initialize = initialize
