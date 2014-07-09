@@ -1,0 +1,218 @@
+
+$primaryColor:rgb(66, 179, 228);
+$textColor:rgb(155, 166, 177);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color:$textColor;
+}
+a:hover {
+  color:$textColor;
+  text-decoration:none;
+}
+.primary-color, .row h1, .row h2, .row h3, .row span.glyphicon, button {
+  color:$primaryColor;
+}
+nav {
+  background-color:$primaryColor;
+  color:white;
+}
+nav.navbar {
+  border:0;
+  border-radius:0;
+  margin-bottom:0;
+}
+.navbar {
+ .container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
+    align-items:center;
+    -webkit-justify-content:space-between;
+    justify-content:space-between;
+    width:100%;
+    min-height:50px;
+    width:100%;
+  }
+  .glyphicon {
+    font-size:1.3em;
+  }
+  .back {
+    margin-right:auto;
+    position:relative;
+  }
+  .back-label {
+    position:absolute;
+    left:25px;
+    top:2px;
+  }
+  .title {
+    text-transform:uppercase;
+  }
+  .glyphicon-search {
+    margin-left:auto;
+  }
+  input[type="text"] {
+    background-color:darken($primaryColor, 20%);
+    border:0;
+    color:white;
+    line-height:2em;
+    padding-left:20px;
+    padding-right:20px;
+    width:100%;
+  }
+  input[type="text"]::-webkit-input-placeholder {
+    color:white;
+  }
+  .twitter-typeahead, .tt-dropdown-menu {
+    width:100%;
+  }
+  .tt-dropdown-menu {
+    background-color:darken($primaryColor, 20%);
+  }
+  .tt-suggestion {
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+  }
+}
+em {
+  font-weight:900;
+  font-style:normal;
+}
+h1 {
+  font-weight:600;
+  margin:0;
+}
+h2 {
+  font-weight:100;
+  margin-top:0;
+  margin-bottom:0;
+}
+h1, h2, h3 {
+  font-size:1.4em;
+  margin:0;
+}
+.row {
+  border-top:1px solid rgb(237, 237, 240);
+  padding-left:15px;
+  padding-right:15px;
+  padding-top:10px;
+  padding-bottom:10px;
+  position:relative;
+}
+.row.street-view {
+  border-top:0;
+  padding:0;
+  position:relative;
+}
+.row.street-view img {
+  width:100%;
+}
+.row.street-view .quote {
+  background-color: rgba(0,0,0,.4);
+  color:white;
+  padding-top:4px;
+  padding-bottom:4px;
+  position:absolute;
+  text-align:center;
+  top:80%;
+  width:100%;
+}
+.row button {
+  border:1px solid $primaryColor;
+  border-radius:4px;
+  float:right;
+  padding-left:14px;
+  padding-right:14px;
+  padding-top:6px;
+  padding-bottom:6px;
+}
+
+.row button.save {
+  background-color:$primaryColor;
+  color:white;
+}
+.row button.save:before {
+  content: "Saved";
+}
+.row button.save.deactivated {
+  background-color:transparent;
+  color:$primaryColor;
+}
+.row button.save.deactivated:before {
+  content: "Save";
+}
+.row ul {
+  list-style-type:none;
+  padding-left:0;
+}
+.row ul, .row p {
+  margin-bottom:0;
+}
+.row time {
+  display:block;
+  font-size:.8em;
+}
+.row span.glyphicon-chevron-right {
+  position:absolute;
+  top:50%;
+  right:8%;
+  margin-top:-.5em;
+}
+.row #search-map {
+  min-height:350px;
+}
+.row p.violation-description {
+  margin-top:1em;
+}
+.row table {
+  margin-top:1em;
+}
+.row table tr:last-child {
+  font-weight:900;
+}
+.row .table th {
+  color: $primaryColor;
+}
+.row .table>thead>tr>th, .table>tbody>tr>td {
+  border-top:0;
+  border-bottom:0;
+  padding:2px;
+}
+.energy-chart {
+  margin-top:1em;
+  width:100%;
+}
+.energy-chart rect.bar {
+  fill: $primaryColor;
+}
+.energy-chart rect.negative-space {
+  fill: #ccc;
+}
+.axis text {
+  fill:$textColor;
+  font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+
+.y.axis line {
+  stroke:black;
+}
+.y.axis .tick:first-child {
+  display:none;
+}
+
+.row h3.table-heading-like {
+  font-size:14px;
+  font-weight:900;
+}
