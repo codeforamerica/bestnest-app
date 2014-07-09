@@ -3,7 +3,7 @@ var view = require('./view')
 var $ = require('jquery')
 
 
-var apiClient = require('./api-client')
+var api = require('./api-client')
 
 $(document).ready(function () {
 
@@ -18,8 +18,9 @@ $(document).ready(function () {
       view.show(routeName, homeId)
     })
 
-  var ac = new apiClient()
-  var x = ac.getHome('1')
+  var x = api.getHome('1')
+
+  x.then(console.log.bind(console,'foo'))
 
   router.history.start()
 })

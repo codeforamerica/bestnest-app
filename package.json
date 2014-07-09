@@ -25,6 +25,13 @@
   "dependencies": {
     "ampersand-router": "^1.0.1",
     "bliss": "^1.0.1",
-    "ampersand-model": "^3.0.4"
+    "ampersand-model": "^3.0.4",
+    "ampersand-view": "^6.0.6",
+    "jquery": "^2.1.1"
+  },
+  "devDependencies": {
+    "watchify": "^0.10.2",
+    "browserify": "^4.2.0",
+    "brfs": "^1.1.2"
   }
 }

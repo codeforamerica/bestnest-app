@@ -1,11 +1,14 @@
 var AmpersandView = require('ampersand-view')
 var fs = require('fs')
 var bliss = new (require('bliss'))
+var api = require('../api-client')
+var $ = require('jquery')
 
 var template = bliss.compile(fs.readFileSync(__dirname +'/../templates/summary.html','utf8'))
 
 var SummaryView = AmpersandView.extend({
   initialize: function () {
+    this.render = this.render.bind(this)
     this.data = {
       home: {
         quote: 'A great place!',
@@ -63,8 +66,15 @@ var SummaryView = AmpersandView.extend({
       }
     }
   },
-  template: function (view) {
-    return template(view.data.home)
+  render: function (homeId) {
+    var view = this
+    view.el = view.el || document.createElement('div')
+    return api.getHome(homeId)
+      .then(function (model) {
+        var home = model.toJSON()
+        var html = template(home)
+        $(view.el).html(html)
+      })
   }
 })
 

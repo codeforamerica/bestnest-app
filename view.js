@@ -30,10 +30,8 @@ function initialize (opt) {
 function show(viewName, homeId) {
   console.log('show', viewName)
   var view = getView(viewName)
-  if (view.data && view.data.home) {
-    view.data.home.id = homeId
-  }
-  view.render()
+  
+  view.render(homeId)
   $(rootElement).empty().append(view.el)
 }
 
