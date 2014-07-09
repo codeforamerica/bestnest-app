@@ -16,25 +16,17 @@
         <p>@home.type</p>
 
       </div>
-      <div class="row" id="utility-costs">
-        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        <h2>Utilities</h2>
-        <ul>
-          <li>$90 / month average electricity</li>
-          <li>$35 / month average water</li>
-        </ul>
-      </div>
       @{
         home.data.sort(function (a, b) {
           return a.order - b.order
         })
       }
       @home.data.map(function (dataset) {
-        @if (dataset.hasDetail) {
-          <a href="#/homes/@home.id/@dataset.id">
-          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        }
-          <div class="row">
+        <div class="row">
+          @if (dataset.hasDetail) {
+            <a href="#/homes/@home.id/@dataset.id">
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+          }
             <h2>@dataset.label</h2>
             @if (dataset.items) {
               <ul>
@@ -52,15 +44,11 @@
                 })
               </ul>
             }
-          </div>
-        @if (dataset.hasDetail) {
-        </a>
-        }
-      })
-      <div class="row">
-        <h2>Crime</h2>
-        <p>Highest</p>
+          @if (dataset.hasDetail) {
+          </a>
+          }
       </div>
+      })
       <div class="row">
         <h2>Owner</h2>
         <p>@home.owner.name</p>

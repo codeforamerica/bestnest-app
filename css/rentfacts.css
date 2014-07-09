@@ -2,6 +2,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: #9ba6b1; }
 
+a:hover {
+  color: #9ba6b1;
+  text-decoration: none; }
+
 .primary-color, .row h1, .row h2, .row h3, .row span.glyphicon, button {
   color: #42b3e4; }
 

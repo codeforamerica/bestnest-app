@@ -13,10 +13,19 @@ var SummaryView = AmpersandView.extend({
         type: 'Single family home',
         data: [
           {
+            id: 'utilites',
+            label: 'Utilities',
+            hasDetail: true,
+            order: 1,
+            items: [
+              {text: '$90 / month average electricity'}, {text:'$35 / month average water'}
+            ]
+          },
+          {
             id: 'violations',
             label: 'Code Violations',
             hasDetail: true,
-            order: 1,
+            order: 2,
             items: [
               {
                 text: 'Abandoned/inoperable vehicles',
@@ -32,14 +41,14 @@ var SummaryView = AmpersandView.extend({
             id: 'schools',
             label: 'Schools',
             hasDetail: false,
-            order: 2,
+            order: 3,
             items: ['Mike Elementary', 'East Ridge Middle', 'East Ridge High']
           },
           {
             id: 'transit',
             label: 'Transit',
             hasDetail: false,
-            order: 3,
+            order: 4,
             items: ['2 bus stops within a 5 minute walk']
           }
         ],
