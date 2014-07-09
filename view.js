@@ -1,8 +1,9 @@
 var $ = require('jquery')
 
 var viewConstructors = {
-  index: require('./views/index.js'),
-  summary: require('./views/summary.js')
+  index: require('./views/index'),
+  summary: require('./views/summary'),
+  violations: require('./views/violations')
 }
 
 var viewCache = {
