@@ -25,9 +25,12 @@ function initialize (opt) {
   root = $(opt.root)
 }
 
-function show(viewName) {
+function show(viewName, homeId) {
   console.log('show', viewName)
   var view = getView(viewName)
+  if (view.data && view.data.home) {
+    view.data.home.id = homeId
+  }
   view.render()
   $(root).empty().append(view.el)
 }

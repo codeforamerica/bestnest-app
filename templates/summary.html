@@ -1,3 +1,4 @@
+  @!(home)
   <div>
     <nav class="nav navbar">
       <div class="container">
@@ -6,13 +7,13 @@
     </nav>
     <div class="container">
       <div class="row street-view">
-        <span class="quote">"Great place to live"</span>
+        <span class="quote">@home.quote</span>
         <img src="http://maps.googleapis.com/maps/api/streetview?size=500x300&location=503%20tremont,%20chattanooga,%20tn">
       </div>
       <div class="row">
         <button class="save deactivated"></button>
-        <h1>2964 E 3rd Street</h1>
-        <p>Single Family Home</p>
+        <h1>@home.address</h1>
+        <p>@home.type</p>
 
       </div>
       <div class="row" id="utility-costs">
@@ -23,44 +24,49 @@
           <li>$35 / month average water</li>
         </ul>
       </div>
-      <div class="row" id="code-violations">
-        <a href="#/homes/:homeId/violations">
-        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        <h2>Code Violations</h2>
-        <ul>
-          <li>Abandoned/inoperable vehicles
-            <time datetime="2014-09-12">Sep 12, 2014</time>
-          </li>
-          <li>
-            Overgrowth on an occupied lot
-            <time datetime="2010-01-23">Jan 23, 2010</time>
-          </li>
-        </ul>
+      @{
+        home.data.sort(function (a, b) {
+          return a.order - b.order
+        })
+      }
+      @home.data.map(function (dataset) {
+        @if (dataset.hasDetail) {
+          <a href="#/homes/@home.id/@dataset.id">
+          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        }
+          <div class="row">
+            <h2>@dataset.label</h2>
+            @if (dataset.items) {
+              <ul>
+                @dataset.items.map(function (item) {
+                  <li>
+                    @if (typeof item === 'object') {
+                      @item.text
+                    } else {
+                      @item
+                    }
+                    @if (item.description) {
+                      <p>@item.description</p>
+                    }
+                  </li>
+                })
+              </ul>
+            }
+          </div>
+        @if (dataset.hasDetail) {
         </a>
-      </div>
-      <div class="row">
-        <h2>Schools</h2>
-        <ul>
-          <li>Allen Elementary</li>
-          <li>East Ridge Middle</li>
-          <li>East Ridge High</li>
-        </ul>
-      </div>
-      <div class="row">
-        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        <h2>Transit</h2>
-        <p>2 bus stops within a 5 minute walk</p>
-      </div>
+        }
+      })
       <div class="row">
         <h2>Crime</h2>
         <p>Highest</p>
       </div>
       <div class="row">
         <h2>Owner</h2>
-        <p>Gina Sakich</p>
-        <p>5559 Little Debbie Parkway</p>
-        <p>Chattanooga, TN</p>
-        <a href="tel:4443453434">(444)354-3434</a>
+        <p>@home.owner.name</p>
+        <p>@home.owner.streetAddress</p>
+        <p>@home.owner.city, @home.owner.state</p>
+        <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormated</a>
       </div>
     </div>
   </div>

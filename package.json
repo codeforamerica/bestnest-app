@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/codeforamerica/bestnest-app",
   "dependencies": {
-    "ampersand-router": "^1.0.1"
+    "ampersand-router": "^1.0.1",
+    "bliss": "^1.0.1"
   }
 }
