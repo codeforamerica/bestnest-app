@@ -1,7 +1,7 @@
 var $ = require('jquery')
 var HomeModel = require('./models/home')
 
-var root = 'http://www.corsproxy.com/dev.bestnestapp.com/'
+var root = 'http://www.corsproxy.com/api.dev.bestnestapp.com/'
 
 function fetch(endpoint) {
   return $.ajax({
