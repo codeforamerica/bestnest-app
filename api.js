@@ -28,7 +28,6 @@ function formatPhone(number) {
 function mapHomeReponse(json) {
   var data = []
   var owner = {}
-  json = apiData.data
 
   for (dataset in json) {
     if (dataset === 'owner_information') {
