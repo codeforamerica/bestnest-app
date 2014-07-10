@@ -1,7 +1,16 @@
 var $ = require('jquery')
-var Home = require('./models/home')
+var HomeModel = require('./models/home')
 
-function homeFromJSON(json) {
+var root = 'http://www.corsproxy.com/dev.bestnestapp.com/'
+
+function fetch(endpoint) {
+  return $.ajax({
+    url: root + endpoint,
+    dataType: 'json'
+  })
+}
+
+function homeModelFromJSON(json) {
   var data = {
     id: json.id,
     quote: 'string',
@@ -10,26 +19,18 @@ function homeFromJSON(json) {
     data: [],
     owner: {}
   }
-  var home = new Home(data)
+  var home = new HomeModel(data)
   return home
 }
 
-var APIRoot = 'http://www.corsproxy.com/dev.bestnestapp.com/'
-var fetch = function(endpoint) {
-  return $.ajax({
-    url: APIRoot + endpoint,
-    dataType: 'json'
-  })
+function getHome(id) {
+  return fetch('buildings/'+id)
+    .then(homeModelFromJSON)
 }
 
-var APIClient = {
-  getHome: function(id) {
-    return fetch('buildings/'+id)
-      .then(homeFromJSON)
-  },
-  search: function(text, cb) {
+function search(text, cb) {
     console.log('Search currently not implemented, good luck finding', text)
-  }
 }
 
-module.exports = APIClient
+module.exports.getHome = getHome
+module.exports.search = search

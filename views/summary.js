@@ -1,8 +1,9 @@
 var AmpersandView = require('ampersand-view')
 var fs = require('fs')
 var bliss = new (require('bliss'))
-var api = require('../api')
 var $ = require('jquery')
+
+var api = require('../api')
 
 var template = bliss.compile(fs.readFileSync(__dirname +'/../templates/summary.html','utf8'))
 

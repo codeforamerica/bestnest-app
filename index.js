@@ -1,6 +1,7 @@
+var $ = require('jquery')
+
 var Router = require('./router')
 var view = require('./view')
-var $ = require('jquery')
 
 $(document).ready(function () {
 
