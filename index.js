@@ -2,9 +2,6 @@ var Router = require('./router')
 var view = require('./view')
 var $ = require('jquery')
 
-
-var api = require('./api-client')
-
 $(document).ready(function () {
 
   view.initialize({rootElement:'#outer'})
@@ -17,10 +14,6 @@ $(document).ready(function () {
 
       view.show(routeName, homeId)
     })
-
-  var x = api.getHome('1')
-
-  x.then(console.log.bind(console,'foo'))
 
   router.history.start()
 })

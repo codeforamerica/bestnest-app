@@ -1,11 +1,10 @@
 var $ = require('jquery')
 
-var apiClient = require('./api-client')
-
 var viewConstructors = {
   index: require('./views/index'),
   summary: require('./views/summary'),
-  violations: require('./views/violations')
+  violations: require('./views/violations'),
+  utilities: require('./views/violations')
 }
 
 var viewCache = {
@@ -30,7 +29,7 @@ function initialize (opt) {
 function show(viewName, homeId) {
   console.log('show', viewName)
   var view = getView(viewName)
-  
+
   view.render(homeId)
   $(rootElement).empty().append(view.el)
 }
