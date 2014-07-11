@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify')
 var buffer = require('vinyl-buffer')
 var size = require('gulp-size')
 var sass = require('gulp-sass')
+var concatCss = require('gulp-concat-css')
 
 gulp.task('browserify-release', ['clean-release'], function () {
   return browserify('./index.js')
@@ -29,7 +30,7 @@ gulp.task('html-release', ['clean-release'], function () {
 gulp.task('css-release', ['clean-release'], function () {
   return gulp.src('./css/bestnest.scss')
     .pipe(sass())
-    .pipe(rename('style.css'))
+    .pipe(concatCss('style.css'))
     .pipe(gulp.dest('./build/release'))
 })
 

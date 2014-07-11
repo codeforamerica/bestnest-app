@@ -43,6 +43,7 @@
     "gulp-uglify": "^0.3.1",
     "vinyl-buffer": "0.0.0",
     "gulp-size": "^0.4.0",
-    "gulp-sass": "^0.7.2"
+    "gulp-sass": "^0.7.2",
+    "gulp-concat-css": "^0.1.4"
   }
 }
