@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "watchify index.js -o bundle.js -t brfs --debug -v",
+    "build-release": "gulp build-release && npm run release",
+    "release": "sh ./release.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +34,16 @@
   "devDependencies": {
     "watchify": "^0.10.2",
     "browserify": "^4.2.0",
-    "brfs": "^1.1.2"
+    "brfs": "^1.1.2",
+    "gulp": "^3.8.6",
+    "vinyl-source-stream": "^0.1.1",
+    "gulp-rename": "^1.2.0",
+    "rimraf": "^2.2.8",
+    "gulp-rimraf": "^0.1.0",
+    "gulp-uglify": "^0.3.1",
+    "vinyl-buffer": "0.0.0",
+    "gulp-size": "^0.4.0",
+    "gulp-sass": "^0.7.2",
+    "gulp-concat-css": "^0.1.4"
   }
 }
