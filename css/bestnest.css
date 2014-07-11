@@ -31,6 +31,8 @@ nav.navbar {
   width: 100%;
   min-height: 50px;
   width: 100%; }
+.navbar a {
+  color: white; }
 .navbar .glyphicon {
   font-size: 1.3em; }
 .navbar .back {
@@ -75,7 +77,8 @@ h1 {
 h2 {
   font-weight: 100;
   margin-top: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  text-transform: capitalize; }
 
 h1, h2, h3 {
   font-size: 1.4em;

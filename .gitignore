@@ -2,3 +2,4 @@ bundle.js
 *.log
 node_modules
 .sass-cache
+build/

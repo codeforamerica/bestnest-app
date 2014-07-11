@@ -37,6 +37,9 @@ nav.navbar {
     min-height:50px;
     width:100%;
   }
+  a {
+    color:white;
+  }
   .glyphicon {
     font-size:1.3em;
   }
@@ -92,6 +95,7 @@ h2 {
   font-weight:100;
   margin-top:0;
   margin-bottom:0;
+  text-transform:capitalize;
 }
 h1, h2, h3 {
   font-size:1.4em;
