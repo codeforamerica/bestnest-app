@@ -1,0 +1,270 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #9ba6b1;
+}
+
+a:hover {
+  color: #9ba6b1;
+  text-decoration: none;
+}
+
+.primary-color,
+.row h1,
+.row h2,
+.row h3,
+.row span.glyphicon,
+button {
+  color: #42b3e4;
+}
+
+nav {
+  background-color: #42b3e4;
+  color: white;
+}
+
+nav.navbar {
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.navbar .container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 50px;
+  width: 100%;
+}
+
+.navbar a {
+  color: white;
+}
+
+.navbar .glyphicon {
+  font-size: 1.3em;
+}
+
+.navbar .back {
+  margin-right: auto;
+  position: relative;
+}
+
+.navbar .back-label {
+  position: absolute;
+  left: 25px;
+  top: 2px;
+}
+
+.navbar .title {
+  text-transform: uppercase;
+}
+
+.navbar .glyphicon-search {
+  margin-left: auto;
+}
+
+.navbar input[type="text"] {
+  background-color: #187da8;
+  border: 0;
+  color: white;
+  line-height: 2em;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+.navbar input[type="text"]::-webkit-input-placeholder {
+  color: white;
+}
+
+.navbar .twitter-typeahead,
+.navbar .tt-dropdown-menu {
+  width: 100%;
+}
+
+.navbar .tt-dropdown-menu {
+  background-color: #187da8;
+}
+
+.navbar .tt-suggestion {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+em {
+  font-weight: 900;
+  font-style: normal;
+}
+
+h1 {
+  font-weight: 600;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 100;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+h1,
+h2,
+h3 {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.row {
+  border-top: 1px solid #ededf0;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.row.street-view {
+  border-top: 0;
+  padding: 0;
+  position: relative;
+}
+
+.row.street-view img {
+  width: 100%;
+}
+
+.row.street-view .quote {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  position: absolute;
+  text-align: center;
+  top: 80%;
+  width: 100%;
+}
+
+.row button {
+  border: 1px solid #42b3e4;
+  border-radius: 4px;
+  float: right;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.row button.save {
+  background-color: #42b3e4;
+  color: white;
+}
+
+.row button.save:before {
+  content: "Saved";
+}
+
+.row button.save.deactivated {
+  background-color: transparent;
+  color: #42b3e4;
+}
+
+.row button.save.deactivated:before {
+  content: "Save";
+}
+
+.row ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.row ul,
+.row p {
+  margin-bottom: 0;
+}
+
+.row time {
+  display: block;
+  font-size: 0.8em;
+}
+
+.row span.glyphicon-chevron-right {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  margin-top: -0.5em;
+}
+
+.row #search-map {
+  min-height: 350px;
+}
+
+.row p.violation-description {
+  margin-top: 1em;
+}
+
+.row table {
+  margin-top: 1em;
+}
+
+.row table tr:last-child {
+  font-weight: 900;
+}
+
+.row .table th {
+  color: #42b3e4;
+}
+
+.row .table > thead > tr > th,
+.table > tbody > tr > td {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 2px;
+}
+
+.energy-chart {
+  margin-top: 1em;
+  width: 100%;
+}
+
+.energy-chart rect.bar {
+  fill: #42b3e4;
+}
+
+.energy-chart rect.negative-space {
+  fill: #ccc;
+}
+
+.axis text {
+  fill: #9ba6b1;
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+
+.y.axis line {
+  stroke: black;
+}
+
+.y.axis .tick:first-child {
+  display: none;
+}
+
+.row h3.table-heading-like {
+  font-size: 14px;
+  font-weight: 900;
+}
