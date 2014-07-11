@@ -1,1 +1,1 @@
-We're working on rentals and learning git.
+This branch is automatically generated. Do not check in files manually as they may be overwritten.
