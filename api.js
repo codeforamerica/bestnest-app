@@ -94,8 +94,9 @@ function getHome(id) {
     .then(handleHomeReponse)
 }
 
-function search(text, cb) {
+function search(text) {
     console.log('Search currently not implemented, good luck finding', text)
+    return fetch('search?q=' + encodeURIComponent(text))
 }
 
 function fetch(endpoint) {
