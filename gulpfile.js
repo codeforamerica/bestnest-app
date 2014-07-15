@@ -2,7 +2,7 @@ var gulp = require('gulp')
 var brfs = require('brfs')
 var source = require('vinyl-source-stream')
 var rename = require('gulp-rename')
-var rimraf = require('gulp-rimraf')
+var del = require('del')
 var uglify = require('gulp-uglify')
 var buffer = require('vinyl-buffer')
 var size = require('gulp-size')
@@ -13,13 +13,15 @@ var livereload = require('gulp-livereload')
 var httpServer = require('http-server')
 var opener = require('opener')
 var watchify = require('watchify')
+var run = require('run-sequence')
+var portfinder = require('portfinder')
 
 var js = function () {
   return browserify('./index.js')
     .transform(brfs)
 }
 
-gulp.task('browserify-release', ['clean-release'], function () {
+gulp.task('browserify-release', ['clean'], function () {
   return js()
     .bundle()
     .pipe(source('./bundle.js'))
@@ -29,54 +31,43 @@ gulp.task('browserify-release', ['clean-release'], function () {
     .pipe(gulp.dest('./build/release/'))
 })
 
-gulp.task('html-release', ['clean-release'], function () {
+gulp.task('html-release', ['clean'], function () {
   return gulp.src('./index.html')
     .pipe(gulp.dest('./build/release/'))
 
 })
 
-gulp.task('html-dev', function () {
+gulp.task('html-dev', ['clean'], function () {
   return gulp.src('./index.html')
     .pipe(gulp.dest('./build/dev/'))
-
 })
 
 
-gulp.task('css-release', ['clean-release'], function () {
+gulp.task('css-release', ['clean'], function () {
   return gulp.src('./css/bestnest.scss')
     .pipe(sass())
     .pipe(concatCss('style.css'))
     .pipe(gulp.dest('./build/release/'))
 })
 
-gulp.task('css-dev', ['clean-release'], function () {
+gulp.task('css-dev', ['clean'], function () {
   return gulp.src('./css/bestnest.scss')
     .pipe(sass())
     .pipe(concatCss('style.css'))
     .pipe(gulp.dest('./build/dev/'))
 })
 
-gulp.task('clean-release', function () {
-  return gulp.src('./build/release/')
-    .pipe(rimraf())
-})
-
-gulp.task('clean-dev', function () {
-  return gulp.src('./build/dev/')
-    .pipe(rimraf())
-})
-
-gulp.task('clean', function () {
-  return gulp.src('./build/')
-    .pipe(rimraf())
+gulp.task('clean', function (cb) {
+  return del('./build', cb)
 })
 
 
-gulp.task('build-release', [
-  'html-release',
-  'browserify-release',
-  'css-release'
-])
+gulp.task('build-release', function (cb) {
+  run('clean',
+    ['html-release', 'browserify-release', 'css-release'],
+    cb)
+
+})
 
 gulp.task('watchify', function () {
   var bundler = watchify(js())
@@ -93,14 +84,16 @@ gulp.task('watchify', function () {
   return rebundle()
 })
 
-gulp.task('dev', [
-  'watchify',
-  'html-dev',
-  'css-dev'
-  ], function () {
-    gulp.watch('./index.html', ['html-dev'])
-    gulp.watch('./css/*.scss', ['css-dev'])
-  })
+gulp.task('dev', function (cb) {
+  run('clean',
+    ['watchify','html-dev','css-dev'],
+    function (err) {
+      if (err) { return cb(err) }
+      gulp.watch('./index.html', ['html-dev'])
+      gulp.watch('./css/*.scss', ['css-dev'])
+      cb()
+    })
+})
 
 gulp.task('serve', ['dev'], function () {
   var lr = livereload()
@@ -110,10 +103,14 @@ gulp.task('serve', ['dev'], function () {
       lr.changed(file.path)
     })
 
-  var server = httpServer.createServer({
-    root: './build/dev'
-  }).listen(9090)
+    portfinder.getPort(function (err, port) {
 
-  opener('http://localhost:9090')
+      var server = httpServer.createServer({
+        root: './build/dev'
+      }).listen(port)
+
+      opener('http://localhost:'+port)
+
+    })
 
 })
