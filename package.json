@@ -30,7 +30,8 @@
     "bliss": "^1.0.1",
     "ampersand-model": "^3.0.4",
     "ampersand-view": "^6.0.6",
-    "jquery": "^2.1.1"
+    "jquery": "^2.1.1",
+    "underscore": "^1.6.0"
   },
   "devDependencies": {
     "watchify": "^0.10.2",
