@@ -71,11 +71,7 @@ function mapHomeReponse(json) {
     }
   }
 
-  console.log('demoMode', demoMode)
-  console.log('data', data)
-
   if (demoMode && data.length === 0){
-    console.log('yo')
     dataTypes = ['utilities', 'violations', 'schools', 'transit']
     dataTypes.map(function(label) {
       structure = {
@@ -87,7 +83,6 @@ function mapHomeReponse(json) {
       }
       data.push(structure)
     })
-    console.log('demoMode data', data)
   }
 
   return {
