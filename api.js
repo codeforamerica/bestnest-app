@@ -2,6 +2,7 @@ var $ = require('jquery')
 var HomeModel = require('./models/home')
 
 var root = 'http://dev.api.bestnestapp.com/'
+var demoMode = true
 
 var labels = {
   'utility_estimates': 'utilities',
@@ -68,6 +69,25 @@ function mapHomeReponse(json) {
       }
       data.push(structure)
     }
+  }
+
+  console.log('demoMode', demoMode)
+  console.log('data', data)
+
+  if (demoMode && data.length === 0){
+    console.log('yo')
+    dataTypes = ['utilities', 'violations', 'schools', 'transit']
+    dataTypes.map(function(label) {
+      structure = {
+        'id': label,
+        'label': label,
+        'hasDetail': hasDetail[label],
+        'order': order[label],
+        'items': ['dataset has yet to be loaded']
+      }
+      data.push(structure)
+    })
+    console.log('demoMode data', data)
   }
 
   return {
