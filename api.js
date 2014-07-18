@@ -5,9 +5,9 @@ var root = 'http://dev.api.bestnestapp.com/'
 var demoMode = true
 
 var labels = {
-  'utility_estimates': 'utilities',
-  'code_violations': 'violations',
-  'schools': 'schools'
+  'utility_estimates': 'Utilities',
+  'code_violations': 'Violations',
+  'schools': 'Schools'
 }
 var hasDetail = {
   'utilities': true,
