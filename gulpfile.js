@@ -96,7 +96,8 @@ gulp.task('dev', function (cb) {
 })
 
 gulp.task('serve', ['dev'], function () {
-  var lr = livereload()
+  var lr = livereload
+  lr.listen()
   gulp.watch('./build/dev/*')
     .on('change', function (file) {
       console.log('build changed', file.path)
