@@ -188,6 +188,9 @@ h1, h2, h3 {
   border-bottom:0;
   padding:2px;
 }
+.row:last-child {
+  padding-bottom:50px;
+}
 .energy-chart {
   margin-top:1em;
   width:100%;
@@ -219,4 +222,21 @@ h1, h2, h3 {
 .row h3.table-heading-like {
   font-size:14px;
   font-weight:900;
+}
+
+.feedback-alert {
+  background-color:rgb(160,38, 111);
+  bottom:0;
+  margin:0 auto;
+  margin-left:10%;
+  position:fixed;
+  text-align:center;
+  width:80%;
+}
+.feedback-alert a {
+  color:white;
+  display:block;
+  min-height:50px;
+  padding-top:15px;
+  width:100%;
 }

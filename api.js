@@ -10,8 +10,8 @@ var labels = {
   'schools': 'Schools'
 }
 var hasDetail = {
-  'utilities': true,
-  'violations': true,
+  'utilities': false,
+  'violations': false,
   'schools': false,
   'transit': false
 }
