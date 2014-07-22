@@ -21,7 +21,7 @@ var js = function () {
     .transform(brfs)
 }
 
-gulp.task('browserify-release', ['clean'], function () {
+gulp.task('browserify-release', function () {
   return js()
     .bundle()
     .pipe(source('./bundle.js'))
@@ -31,26 +31,26 @@ gulp.task('browserify-release', ['clean'], function () {
     .pipe(gulp.dest('./build/release/'))
 })
 
-gulp.task('html-release', ['clean'], function () {
+gulp.task('html-release', function () {
   return gulp.src('./index.html')
     .pipe(gulp.dest('./build/release/'))
 
 })
 
-gulp.task('html-dev', ['clean'], function () {
+gulp.task('html-dev', function () {
   return gulp.src('./index.html')
     .pipe(gulp.dest('./build/dev/'))
 })
 
 
-gulp.task('css-release', ['clean'], function () {
+gulp.task('css-release', function () {
   return gulp.src('./css/bestnest.scss')
     .pipe(sass())
     .pipe(concatCss('style.css'))
     .pipe(gulp.dest('./build/release/'))
 })
 
-gulp.task('css-dev', ['clean'], function () {
+gulp.task('css-dev', function () {
   return gulp.src('./css/bestnest.scss')
     .pipe(sass())
     .pipe(concatCss('style.css'))
@@ -96,7 +96,8 @@ gulp.task('dev', function (cb) {
 })
 
 gulp.task('serve', ['dev'], function () {
-  var lr = livereload()
+  var lr = livereload
+  lr.listen()
   gulp.watch('./build/dev/*')
     .on('change', function (file) {
       console.log('build changed', file.path)
