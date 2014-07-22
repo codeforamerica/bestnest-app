@@ -1,6 +1,7 @@
 {
   "name": "bestnest-app",
   "version": "1.0.0",
+  "engines" : { "node" : ">=0.10.29 <0.11" },
   "description": "the front end of bestnestapp.com",
   "main": "index.js",
   "scripts": {
