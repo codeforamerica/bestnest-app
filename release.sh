@@ -14,7 +14,7 @@ then
   git add bundle.js -f
   git commit -m "deploy at `git log | head -c15`"
   git push origin gh-pages -f
-  git checkout master -f
+  git checkout master
 else
   echo "not currently on master, not checking in to github"
 fi

@@ -8,8 +8,9 @@
     "dev": "watchify index.js -o bundle.js -t brfs --debug -v",
     "build-release": "gulp build-release && npm run release",
     "release": "sh ./release.sh",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp serve"
+    "test": "echo no real tests yet but okay",
+    "start": "gulp serve",
+    "prod": "gulp build-release && http-server build/release"
   },
   "repository": {
     "type": "git",
