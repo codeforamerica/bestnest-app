@@ -88,8 +88,6 @@ function mapHomeReponse(json) {
     })
   }
 
-  window.owner = owner
-
   return {
     'data': data,
     'owner': owner
