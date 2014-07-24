@@ -37,6 +37,11 @@ gulp.task('html-release', function () {
 
 })
 
+gulp.task('enginelight', function () {
+  return gulp.src('./.well-known/status')
+    .pipe(gulp.dest('./build/release/.well-known/'))
+})
+
 gulp.task('html-dev', function () {
   return gulp.src('./index.html')
     .pipe(gulp.dest('./build/dev/'))
@@ -64,7 +69,7 @@ gulp.task('clean', function (cb) {
 
 gulp.task('build-release', function (cb) {
   run('clean',
-    ['html-release', 'browserify-release', 'css-release'],
+    ['html-release', 'browserify-release', 'css-release', 'enginelight'],
     cb)
 
 })
