@@ -31,9 +31,9 @@ function mapHomeReponse(json) {
   var owner = {}
 
   for (dataset in json) {
-    if (dataset === 'owner_information') {
+    if (dataset === 'owner') {
       owner.name = json[dataset].name
-      owner.streetAddress = json[dataset].street_address
+      owner.streetAddress = json[dataset].address
       owner.city = json[dataset].city
       owner.state = json[dataset].state
       owner.phonePlain = json[dataset].phone
@@ -41,33 +41,36 @@ function mapHomeReponse(json) {
     }
     else {
       var label = labels[dataset]
-      structure = {
-        'id': label,
-        'label': label,
-        'hasDetail': hasDetail[label],
-        'order': order[label],
-        'items': []
-      }
-      if (label === 'utilities') {
-      }
-      else if (label === 'violations') {
-        var violations = json[dataset]
-        violations.map(function(item) {
-          structure.items.push({
-            'text': item.description,
-            'description': item.date_issued
+      if (label !== undefined) {
+        structure = {
+          'id': label,
+          'label': label,
+          'hasDetail': hasDetail[label],
+          'order': order[label],
+          'items': []
+        }
+        if (label === 'utilities') {
+        }
+        else if (label === 'violations') {
+          var violations = json[dataset]
+          violations.map(function(item) {
+            structure.items.push({
+              'text': item.description,
+              'description': item.date_issued
+            })
           })
-        })
+        }
+        else if (label === 'schools') {
+          var schools = json[dataset]
+          structure.items = [
+            schools['elementary'],
+            schools['middle'],
+            schools['high']
+          ]
+        }
+
+        data.push(structure)
       }
-      else if (label === 'schools') {
-        var schools = json[dataset]
-        structure.items = [
-          schools['elementary'],
-          schools['middle'],
-          schools['high']
-        ]
-      }
-      data.push(structure)
     }
   }
 
