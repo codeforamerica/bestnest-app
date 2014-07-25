@@ -83,6 +83,19 @@ nav.navbar {
     padding-right:20px;
   }
 }
+.intro-text {
+  margin-top:20px;
+}
+.intro-text h1, .intro-text h2 {
+  text-align:center;
+}
+.intro-text h1 {
+  margin-bottom:10px;
+}
+.intro-text h2 {
+  margin-bottom:7px;
+  text-transform:none;
+}
 em {
   font-weight:900;
   font-style:normal;
