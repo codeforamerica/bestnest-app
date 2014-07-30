@@ -1,8 +1,8 @@
 var $ = require('jquery')
 var HomeModel = require('./models/home')
 
-//var root = 'http://dev.api.bestnestapp.com/'
-var root = 'http://localhost:9001/'
+var root = 'http://dev.api.bestnestapp.com/'
+//var root = 'http://localhost:9001/'
 var demoMode = true
 
 var labels = {
