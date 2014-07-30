@@ -1,7 +1,8 @@
 var $ = require('jquery')
 var HomeModel = require('./models/home')
 
-var root = 'http://dev.api.bestnestapp.com/'
+//var root = 'http://dev.api.bestnestapp.com/'
+var root = 'http://localhost:9001/'
 var demoMode = true
 
 var labels = {
@@ -32,6 +33,7 @@ function mapHomeReponse(json) {
 
   for (dataset in json) {
     if (dataset === 'owner') {
+      owner.id = json[dataset].id
       owner.name = json[dataset].name
       owner.streetAddress = json[dataset].address
       owner.city = json[dataset].city
@@ -98,13 +100,30 @@ function handleHomeReponse(json) {
   var data = mapHomeReponse(json.data)
   var home = new HomeModel({
     id: json.id,
-    quote: json.quote || 'quote string',
+    quote: json.quote || 'This is an awesome place to rent!',
     address: json.address,
-    type: json.type || 'type string',
+    type: json.type || 'Single family home',
     data: data.data,
     owner: data.owner
   })
   return home
+}
+
+function handleLandlordResponse(json) {
+  var landlord = {
+    id: json.id,
+    name: json.name,
+    data: json.data
+  }
+
+  console.log('landlord', landlord)
+
+  return landlord
+}
+
+function getLandlord(id) {
+  return fetch('landlords/'+id)
+    .then(handleLandlordResponse)
 }
 
 function getHome(id) {
@@ -122,5 +141,7 @@ function fetch(endpoint) {
     dataType: 'json'
   })
 }
+
+module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
 module.exports.search = search
