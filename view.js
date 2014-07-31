@@ -4,7 +4,8 @@ var viewConstructors = {
   index: require('./views/index'),
   summary: require('./views/summary'),
   violations: require('./views/violations'),
-  utilities: require('./views/violations')
+  utilities: require('./views/violations'),
+  landlord: require('./views/landlord')
 }
 
 var viewCache = {

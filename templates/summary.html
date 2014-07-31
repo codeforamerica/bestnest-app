@@ -51,15 +51,14 @@
       </div>
       })
       <div class="row">
-        <h2>Owner</h2>
-        <p>@home.owner.name</p>
-        <p>@home.owner.streetAddress</p>
-        <p>@home.owner.city, @home.owner.state</p>
-        <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
+        <a href="#/landlords/@home.owner.id">
+          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+          <h2>Owner</h2>
+          <p>@home.owner.name</p>
+          <p>@home.owner.streetAddress</p>
+          <p>@home.owner.city, @home.owner.state</p>
+          <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
+        </a>
       </div>
-
-    </div>
-    <div class="feedback-alert">
-      <a href="https://giselle2.typeform.com/to/LCcoVa">Share what you know about @home.address</a>
     </div>
   </div>
