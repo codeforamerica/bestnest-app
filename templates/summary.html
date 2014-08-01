@@ -24,7 +24,7 @@
       }
       @home.data.map(function (dataset) {
         <div class="row">
-          @if (dataset.hasDetail) {
+          @if (dataset.hasDetail && (dataset.items.length != 0)) {
             <a href="#/homes/@home.id/@dataset.id">
               <span class="glyphicon glyphicon-chevron-right pull-right"></span>
           }
@@ -45,7 +45,7 @@
                 })
               </ul>
             }
-          @if (dataset.hasDetail) {
+          @if (dataset.hasDetail && (dataset.items.length != 0)) {
           </a>
           }
       </div>
