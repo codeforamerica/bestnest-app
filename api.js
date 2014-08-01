@@ -1,4 +1,6 @@
 var $ = require('jquery')
+var _ = require('underscore')
+
 var HomeModel = require('./models/home')
 
 var root = 'http://dev.api.bestnestapp.com/'
@@ -6,13 +8,13 @@ var root = 'http://dev.api.bestnestapp.com/'
 var demoMode = true
 
 var labels = {
-  'utility_estimates': 'Utilities',
-  'code_violations': 'Violations',
-  'schools': 'Schools'
+  'utility_estimates': 'utilities',
+  'violations': 'violations',
+  'schools': 'schools'
 }
 var hasDetail = {
   'utilities': false,
-  'violations': false,
+  'violations': true,
   'schools': false,
   'transit': false
 }
@@ -54,11 +56,11 @@ function mapHomeReponse(json) {
         if (label === 'utilities') {
         }
         else if (label === 'violations') {
-          var violations = json[dataset]
+          var violations = json[dataset].violations
           violations.map(function(item) {
             structure.items.push({
-              'text': item.description,
-              'description': item.date_issued
+              'text': item.caseType,
+              'description': item.description
             })
           })
         }
@@ -76,17 +78,22 @@ function mapHomeReponse(json) {
     }
   }
 
-  if (demoMode && data.length === 0){
-    dataTypes = ['utilities', 'violations', 'schools', 'transit']
-    dataTypes.map(function(label) {
-      structure = {
-        'id': label,
-        'label': label,
-        'hasDetail': hasDetail[label],
-        'order': order[label],
-        'items': ['dataset has yet to be loaded']
+  if (demoMode) {
+    var labelsWithData = data.map(function(item) {
+      return item.label
+    })
+
+    Object.keys(order).map(function(label) {
+      if (_.contains(labelsWithData, label) != true) {
+        structure = {
+          'id': label,
+          'label': label,
+          'hasDetail': hasDetail[label],
+          'order': order[label],
+          'items': ['dataset has yet to be loaded']
+        }
+        data.push(structure)
       }
-      data.push(structure)
     })
   }
 
@@ -109,15 +116,26 @@ function handleHomeReponse(json) {
   return home
 }
 
+function getHome(id) {
+  return fetch('homes/'+id)
+    .then(handleHomeReponse)
+}
+
+function handleCodeViolationReponse(json) {
+  return json.data
+}
+
+function getCodeViolations(id) {
+  return fetch('homes/'+id+'/violations')
+    .then(handleCodeViolationReponse)
+}
+
 function handleLandlordResponse(json) {
   var landlord = {
     id: json.id,
     name: json.name,
     data: json.data
   }
-
-  console.log('landlord', landlord)
-
   return landlord
 }
 
@@ -126,10 +144,7 @@ function getLandlord(id) {
     .then(handleLandlordResponse)
 }
 
-function getHome(id) {
-  return fetch('homes/'+id)
-    .then(handleHomeReponse)
-}
+
 
 function search(text) {
   return fetch('search?q=' + encodeURIComponent(text))
@@ -142,6 +157,7 @@ function fetch(endpoint) {
   })
 }
 
+module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
 module.exports.search = search
