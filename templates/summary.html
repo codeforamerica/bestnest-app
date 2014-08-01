@@ -24,32 +24,40 @@
       }
       @home.data.map(function (dataset) {
         <div class="row">
-          @if (dataset.hasDetail && (dataset.items.length != 0)) {
-            <a href="#/homes/@home.id/@dataset.id">
-              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        @if (dataset.items.length != 0) {
+          @if (dataset.hasDetail) {
+          <a href="#/homes/@home.id/@dataset.id">
+            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
           }
-            <h2>@dataset.label</h2>
-            @if (dataset.items) {
-              <ul>
-                @dataset.items.map(function (item) {
-                  <li>
-                    @if (typeof item === 'object') {
-                      @item.text
-                    } else {
-                      @item
-                    }
-                    @if (item.description) {
-                      <p>@item.description</p>
-                    }
-                  </li>
-                })
-              </ul>
-            }
-          @if (dataset.hasDetail && (dataset.items.length != 0)) {
+          <h2>@dataset.label</h2>
+          @if (dataset.items) {
+            <ul>
+              @dataset.items.map(function (item) {
+                <li>
+                  @if (typeof item === 'object') {
+                    @item.text
+                  } else {
+                    @item
+                  }
+                  @if (item.description) {
+                    <p>@item.description</p>
+                  }
+                </li>
+              })
+            </ul>
+          }
+          @if (dataset.hasDetail) {
           </a>
           }
+        }
+        else {
+          <h2>@dataset.label</h2>
+          <ul>
+            <li>There are no @dataset.label.toLowerCase() for this property</li>
+          </ul>
+        }
       </div>
-      })
+    })
       <div class="row">
         <a href="#/landlords/@home.owner.id">
           <span class="glyphicon glyphicon-chevron-right pull-right"></span>
