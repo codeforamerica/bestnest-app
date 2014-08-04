@@ -56,12 +56,12 @@ function mapHomeReponse(json) {
         if (label === 'utilities') {
         }
         else if (label === 'violations') {
-          var violations = json[dataset].violations
-          violations.map(function(item) {
-            structure.items.push({
+          var summary = json[dataset].summary
+          structure.items = summary.map(function(item) {
+            return {
               'text': item.caseType,
               'description': item.description
-            })
+            }
           })
         }
         else if (label === 'schools') {
