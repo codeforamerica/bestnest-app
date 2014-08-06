@@ -1,21 +1,18 @@
   @!(home)
-  <div>
     <nav class="nav navbar">
       <div class="container">
+        <span class="title">@home.address</span>
         <a href="#" class="glyphicon glyphicon-search">
         </a>
       </div>
     </nav>
     <div class="container">
       <div class="row street-view">
-        <span class="quote">@home.quote</span>
         <img src="http://maps.googleapis.com/maps/api/streetview?size=500x300&location=@home.address,%20chattanooga,%20tn">
       </div>
-      <div class="row">
-        <button class="save deactivated"></button>
-        <h1>@home.address</h1>
-        <p>@home.type</p>
-
+      <div class="row review">
+        <div class="quote">@home.quote</div>
+        <button>Share your tips about this rental</button>
       </div>
       @{
         home.data.sort(function (a, b) {
@@ -23,11 +20,11 @@
         })
       }
       @home.data.map(function (dataset) {
-        <div class="row">
+        <div class="row data-row">
         @if (dataset.items.length != 0) {
           @if (dataset.hasDetail) {
           <a href="#/homes/@home.id/@dataset.id">
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            <div class="chevron"></div>
           }
           <h2>@dataset.label</h2>
           @if (dataset.items) {
@@ -56,17 +53,38 @@
             <li>There are no @dataset.label.toLowerCase() for this property</li>
           </ul>
         }
+        <div class="border"></div>
       </div>
     })
-      <div class="row">
+      <div class="row data-row">
         <a href="#/landlords/@home.owner.id">
-          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+          <div class="chevron"></div>
           <h2>Owner</h2>
           <p>@home.owner.name</p>
           <p>@home.owner.streetAddress</p>
           <p>@home.owner.city, @home.owner.state</p>
           <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
         </a>
+      </div>
+      <div class="ugc-row row" id="ugc-first">
+        <div class="col-xs-12 col-sm-4">
+          <h2>Lease Type</h2>
+          <p>Long-term</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <h2>Heating</h2>
+          <p>Gas Heat</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <h2>Pets Allowed?</h2>
+          <p>No</p>
+        </div>
+      </div>
+      <div class="ugc-row row">
+        <p>* User Contributed Content</p>
+      </div>
+      <div class="ugc-row row">
+        <button>Contribute Information</button>
       </div>
     </div>
   </div>
