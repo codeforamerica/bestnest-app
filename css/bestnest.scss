@@ -1,5 +1,6 @@
 
-$primaryColor:rgb(66, 179, 228);
+$primaryColor: #e74640;
+/* rgb(66, 179, 228);*/
 $textColor:rgb(155, 166, 177);
 
 body {
@@ -14,11 +15,12 @@ a:hover {
   color:$primaryColor;
 }
 nav {
-  background-color:$primaryColor;
-  color:white;
+  background-color:white;
+  color:$primaryColor;
 }
 nav.navbar {
   border:0;
+  border-bottom:2px solid $textColor;
   border-radius:0;
   margin-bottom:0;
 }
@@ -38,7 +40,7 @@ nav.navbar {
     width:100%;
   }
   a {
-    color:white;
+    color:$primaryColor;
   }
   .glyphicon {
     font-size:1.3em;
@@ -55,20 +57,27 @@ nav.navbar {
   .title {
     text-transform:uppercase;
   }
+  .glyphicon-search.inside-input {
+    position:absolute;
+    margin-top:15px;
+    margin-left:5px;
+  }
   .glyphicon-search {
     margin-left:auto;
   }
   input[type="text"] {
-    background-color:darken($primaryColor, 20%);
+    background-color:rgb(221,221,221);
     border:0;
-    color:white;
+    border-radius:6px;
+    color:$primaryColor;
     line-height:2em;
-    padding-left:20px;
-    padding-right:20px;
-    width:100%;
+    padding-left:30px;
+    padding-right:30px;
+    width:80%;
   }
   input[type="text"]::-webkit-input-placeholder {
-    color:white;
+    color:rgb(157, 156, 165);
+    padding-left:5px;
   }
   .twitter-typeahead, .tt-dropdown-menu {
     width:100%;
@@ -82,19 +91,6 @@ nav.navbar {
     padding-left:20px;
     padding-right:20px;
   }
-}
-.intro-text {
-  margin-top:20px;
-}
-.intro-text h1, .intro-text h2 {
-  text-align:center;
-}
-.intro-text h1 {
-  margin-bottom:10px;
-}
-.intro-text h2 {
-  margin-bottom:7px;
-  text-transform:none;
 }
 em {
   font-weight:900;
@@ -113,6 +109,19 @@ h2 {
 h1, h2, h3 {
   font-size:1.4em;
   margin:0;
+}
+.logo {
+  width:70%;
+  margin:0 auto;
+  text-align:center;
+}
+.logo h1 {
+  margin-top:30px;
+  font-weight:100;
+}
+.logo img {
+  margin:0 auto;
+  margin-top:45px;
 }
 .row {
   border-top:1px solid rgb(237, 237, 240);
@@ -151,18 +160,7 @@ h1, h2, h3 {
 }
 
 .row button.save {
-  background-color:$primaryColor;
-  color:white;
-}
-.row button.save:before {
-  content: "Saved";
-}
-.row button.save.deactivated {
-  background-color:transparent;
-  color:$primaryColor;
-}
-.row button.save.deactivated:before {
-  content: "Save";
+  display:none;
 }
 .row ul {
   list-style-type:none;
