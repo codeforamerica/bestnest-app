@@ -1,6 +1,7 @@
   @!(home)
     <nav class="nav navbar">
       <div class="container">
+        <span class="back"></span>
         <span class="title">@home.address</span>
         <a href="#" class="glyphicon glyphicon-search">
         </a>
@@ -28,7 +29,7 @@
         @if (dataset.items.length != 0) {
           @if (dataset.hasDetail) {
           <a href="#/homes/@home.id/@dataset.id">
-            <div class="chevron"></div>
+            <div class="chevron right"></div>
           }
           <h2>@dataset.label</h2>
           @if (dataset.items) {
@@ -62,7 +63,7 @@
     })
       <div class="row data-row">
         <a href="#/landlords/@home.owner.id">
-          <div class="chevron"></div>
+          <div class="chevron right"></div>
           <h2>Owner</h2>
           <p>@home.owner.name</p>
           <p>@home.owner.streetAddress</p>

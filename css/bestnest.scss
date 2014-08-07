@@ -60,11 +60,12 @@ nav.navbar {
   .back-label {
     position:absolute;
     left:25px;
-    top:2px;
+    top:-10px;
   }
   .title {
     color:$largeTextColor;
     margin-left:auto;
+    margin-right:auto;
     text-transform:uppercase;
   }
   .glyphicon-search.inside-input {
@@ -142,6 +143,25 @@ button {
     margin-top:45px;
   }
 }
+.chevron {
+  border:2px solid $primaryColor;
+  margin-top:-.8em;
+  min-height:20px;
+  position:absolute;
+  top:50%;
+  width:20px;
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+}
+.chevron.left {
+  border-top-style:none;
+  border-right-style:none;
+}
+.chevron.right {
+  border-bottom-style:none;
+  border-left-style:none;
+  right:15px;
+}
 .row {
   color:$textColor;
   padding-left:15px;
@@ -167,9 +187,6 @@ button {
   padding-top:30px;
   padding-bottom:30px;
   text-align:center;
-}
-.row .review {
-
 }
 .review .review-author, .review .review-text {
   padding:20px;
@@ -212,19 +229,6 @@ button {
 .row time {
   display:block;
   font-size:.8em;
-}
-.row .chevron {
-  border:2px solid $primaryColor;
-  border-bottom-style:none;
-  border-left-style:none;
-  margin-top:-.8em;
-  min-height:20px;
-  position:absolute;
-  top:50%;
-  right:15px;
-  width:20px;
-  -webkit-transform:rotate(45deg);
-  transform:rotate(45deg);
 }
 .row #search-map {
   min-height:350px;
