@@ -7,6 +7,7 @@ var AppRouter = AmpersandRouter.extend({
     "homes/:homeId/violations": "violations",
     "homes/:homeId/reviews": "reviews",
     "homes/:homeId/reviews/new": "leaveReview",
+    "homes/:homeId/questions": "questions",
     "landlords/:landlordId": "landlord"
   }
 })
