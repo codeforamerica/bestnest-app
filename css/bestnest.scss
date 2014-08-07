@@ -5,6 +5,7 @@ $textColor:#666666;
 $borderColor:#a5a5a5;
 
 body {
+  background-color:#f0f0f0;
   font-family:'Open Sans', sans-serif;
   color:$textColor;
 }
@@ -152,6 +153,9 @@ button {
 .row.street-view img {
   width:100%;
 }
+.row.main-review, .row .review {
+  background-color:white;
+}
 .row.review {
   color:$largeTextColor;
   font-size:1.1em;
@@ -159,16 +163,21 @@ button {
   padding-bottom:30px;
   text-align:center;
 }
+.row .review {
 
+}
+.review .review-author, .review .review-text {
+  padding:20px;
+}
+.review .review-author {
+  border-top:1px solid $borderColor;
+}
 .row.review .quote, button {
   margin:0 auto;
   margin-left:auto;
   padding-top:10px;
   padding-bottom:15px;
   width:90%;
-}
-.row.data-row, .row.ugc-row {
-  background-color:#f0f0f0;
 }
 .row.data-row, .row.ugc-row {
   h2, .border, ul, p {
