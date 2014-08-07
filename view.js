@@ -6,6 +6,7 @@ var viewConstructors = {
   utilities: require('./views/violations'),
   violations: require('./views/violations'),
   reviews: require('./views/reviews'),
+  questions: require('./views/questions'),
   leaveReview: require('./views/leaveReview'),
   landlord: require('./views/landlord')
 }
