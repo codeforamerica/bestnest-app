@@ -107,7 +107,7 @@ function handleHomeReponse(json) {
   var data = mapHomeReponse(json.data)
   var home = new HomeModel({
     id: json.id,
-    quote: json.quote || 'This is an awesome place to rent!',
+    quote: json.quote || 'This is a great place to live. I can\'t say enough nice things about the house...',
     address: json.address,
     type: json.type || 'Single family home',
     data: data.data,
