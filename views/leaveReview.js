@@ -11,15 +11,11 @@ var LeaveReviewView = AmpersandView.extend({
   initialize: function () {
     this.render = this.render.bind(this)
   },
-  render: function (landlordId) {
+  render: function () {
     var view = this
     view.el = view.el || document.createElement('div')
-    return api.getLandlord(landlordId)
-      .then(function (model) {
-        console.log('model', model)
-        var html = template(model)
-        $(view.el).html(html)
-      })
+    var html = template()
+    return $(view.el).html(html)
   }
 })
 
