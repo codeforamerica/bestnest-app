@@ -10,8 +10,10 @@
       <div class="row street-view">
         <img src="http://maps.googleapis.com/maps/api/streetview?size=500x300&location=@home.address,%20chattanooga,%20tn">
       </div>
-      <div class="row review">
-        <div class="quote">@home.quote</div>
+      <div class="row main-review review">
+        <a href="#/homes/@home.id/reviews">
+          <div class="quote">@home.quote</div>
+        </a>
         <button>Share your tips about this rental</button>
       </div>
       @{
