@@ -16,6 +16,11 @@ a:hover {
   color:$textColor;
   text-decoration:none;
 }
+textarea {
+  padding:15px;
+  width:100%;
+  color:$textColor;
+}
 .glyphicon {
   color:$primaryColor;
 }
@@ -240,4 +245,11 @@ button {
   p {
     font-style:italic;
   }
+}
+.input-title {
+  margin:0 auto;
+  width:80%;
+}
+.input-title h2 {
+  text-transform:none;
 }
