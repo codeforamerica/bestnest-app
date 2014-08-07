@@ -11,10 +11,11 @@ var ReviewsView = AmpersandView.extend({
   initialize: function () {
     this.render = this.render.bind(this)
   },
-  render: function () {
+  render: function (homeId) {
+    console.log('homeid', homeId)
     var view = this
     view.el = view.el || document.createElement('div')
-    var html = template()
+    var html = template(homeId)
     return $(view.el).html(html)
   }
 })
