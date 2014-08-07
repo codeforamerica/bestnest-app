@@ -253,3 +253,16 @@ button {
 .input-title h2 {
   text-transform:none;
 }
+.button-group {
+  width:100%;
+}
+.button-group button {
+  border-right:none;
+  float:left;
+  min-height:25px;
+  padding:0;
+  width:33%;
+}
+.button-group button:last-child {
+  border-right:1px solid $primaryColor;
+}
