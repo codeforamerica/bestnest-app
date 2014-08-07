@@ -1,7 +1,8 @@
-
-$primaryColor:#e74640;
+$primaryColor:#ff493f;
 $headerColor:#535353;
+$largeTextColor:#959595;
 $textColor:#666666;
+$borderColor:#a5a5a5;
 
 body {
   font-family:'Open Sans', sans-serif;
@@ -56,7 +57,7 @@ nav.navbar {
     top:2px;
   }
   .title {
-    color:$textColor;
+    color:$largeTextColor;
     margin-left:auto;
     text-transform:uppercase;
   }
@@ -113,6 +114,13 @@ h1, h2, h3 {
   font-size:1.2em;
   margin:0;
 }
+button {
+  background-color:white;
+  border:1px solid $primaryColor;
+  color:$primaryColor;
+  display:block;
+  margin-top:10px;
+}
 .logo {
   width:70%;
   margin:0 auto;
@@ -145,19 +153,14 @@ h1, h2, h3 {
   width:100%;
 }
 .row.review {
+  color:$largeTextColor;
   font-size:1.1em;
   padding-top:30px;
   padding-bottom:30px;
   text-align:center;
 }
-button {
-  background-color:white;
-  border:1px solid $primaryColor;
-  color:$primaryColor;
-  display:block;
-  margin-top:10px;
-}
-.row.review div, button {
+
+.row.review .quote, button {
   margin:0 auto;
   margin-left:auto;
   padding-top:10px;
@@ -177,7 +180,7 @@ button {
     font-weight:700;
   }
   .border {
-    border-bottom:1px solid $textColor;
+    border-bottom:1px solid $borderColor;
     bottom:0;
     margin-left:4%;
     min-height:1px;
@@ -216,7 +219,7 @@ button {
   margin-top:1em;
 }
 .ugc-row#ugc-first {
-  border-top:1px solid $textColor;
+  border-top:1px solid $borderColor;
 }
 .ugc-row {
   div {
