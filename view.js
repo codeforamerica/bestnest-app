@@ -3,8 +3,11 @@ var $ = require('jquery')
 var viewConstructors = {
   index: require('./views/index'),
   summary: require('./views/summary'),
-  violations: require('./views/violations'),
   utilities: require('./views/violations'),
+  violations: require('./views/violations'),
+  reviews: require('./views/reviews'),
+  questions: require('./views/questions'),
+  leaveReview: require('./views/leaveReview'),
   landlord: require('./views/landlord')
 }
 

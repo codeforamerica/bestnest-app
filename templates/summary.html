@@ -1,6 +1,7 @@
   @!(home)
     <nav class="nav navbar">
       <div class="container">
+        <span class="back"></span>
         <span class="title">@home.address</span>
         <a href="#" class="glyphicon glyphicon-search">
         </a>
@@ -10,9 +11,13 @@
       <div class="row street-view">
         <img src="http://maps.googleapis.com/maps/api/streetview?size=500x300&location=@home.address,%20chattanooga,%20tn">
       </div>
-      <div class="row review">
-        <div class="quote">@home.quote</div>
-        <button>Share your tips about this rental</button>
+      <div class="row main-review review">
+        <a href="#/homes/@home.id/reviews">
+          <div class="quote">@home.quote</div>
+        </a>
+        <a href="#/homes/@home.id/reviews/new">
+          <button>Share your tips about this rental</button>
+        </a>
       </div>
       @{
         home.data.sort(function (a, b) {
@@ -24,7 +29,7 @@
         @if (dataset.items.length != 0) {
           @if (dataset.hasDetail) {
           <a href="#/homes/@home.id/@dataset.id">
-            <div class="chevron"></div>
+            <div class="chevron right"></div>
           }
           <h2>@dataset.label</h2>
           @if (dataset.items) {
@@ -58,7 +63,7 @@
     })
       <div class="row data-row">
         <a href="#/landlords/@home.owner.id">
-          <div class="chevron"></div>
+          <div class="chevron right"></div>
           <h2>Owner</h2>
           <p>@home.owner.name</p>
           <p>@home.owner.streetAddress</p>
@@ -84,7 +89,9 @@
         <p>* User Contributed Content</p>
       </div>
       <div class="ugc-row row">
-        <button>Contribute Information</button>
+        <a href="#/homes/@home.id/questions">
+          <button>Contribute Information</button>
+        </a>
       </div>
     </div>
   </div>
