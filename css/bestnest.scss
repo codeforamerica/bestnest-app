@@ -144,7 +144,7 @@ button {
   padding-bottom:10px;
   position:relative;
 }
-.row.street-view {
+.row.street-view, .row.map {
   border-top:0;
   padding:0;
   position:relative;
@@ -230,5 +230,33 @@ button {
   }
   p {
     font-style:italic;
+  }
+}
+
+.map {
+  display:none;
+}
+
+@media all and (min-width: 769px) {
+  .desktop-col {
+    float:left;
+    margin-top:20px;
+    width:40%;
+  }
+  .desktop-col .map {
+    display:block;
+    margin-top:40px;
+  }
+  .desktop-col.data {
+    margin-left:20%;
+  }
+  .desktop-col .row.review {
+    padding-top:0;
+  }
+  .desktop-col .row.review .quote {
+    padding-top:0;
+  }
+  #ugc-first {
+    padding-left:45px;
   }
 }
