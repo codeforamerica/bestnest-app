@@ -157,7 +157,30 @@ function fetch(endpoint) {
   })
 }
 
+function postComment(subject, name, body) {
+  var data = {
+    subject: subject,
+    name: name,
+    body: body
+  }
+
+  return $.ajax({
+    url: root + 'comments',
+    dataType: 'json',
+    data: JSON.stringify(data),
+    type: 'POST',
+    contentType: 'application/json'
+  }).then(function (body, state, xhr) {
+    // don't be fooled: jquery promises aren't real promises
+    // ES Promises only have 1 value, not 3 :/
+    if (xhr.state !== 201) {
+      throw new Error('posting comment was not successful')
+    }
+  })
+}
+
 module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
 module.exports.search = search
+module.exports.postComment = postComment
