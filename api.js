@@ -166,14 +166,13 @@ function postComment(subject, name, body) {
 
   return $.ajax({
     url: root + 'comments',
-    dataType: 'json',
     data: JSON.stringify(data),
     type: 'POST',
     contentType: 'application/json'
   }).then(function (body, state, xhr) {
     // don't be fooled: jquery promises aren't real promises
     // ES Promises only have 1 value, not 3 :/
-    if (xhr.state !== 201) {
+    if (xhr.status !== 201) {
       throw new Error('posting comment was not successful')
     }
   })
