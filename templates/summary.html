@@ -9,7 +9,12 @@
     </nav>
     <div class="container">
       <div class="row street-view">
-        <img src="http://maps.googleapis.com/maps/api/streetview?size=500x300&location=@home.address,%20chattanooga,%20tn">
+        @{
+        var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=500x300&location='
+          + encodeURIComponent(home.address)
+          + ',%20chattanooga,%20tn'
+        }
+        <img src="@imageUrl">
       </div>
       <div class="row main-review review">
         <a href="#/homes/@home.id/reviews">
