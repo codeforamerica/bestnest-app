@@ -13,7 +13,12 @@
       </div>
       <div class="row main-review review">
         <a href="#/homes/@home.id/reviews">
-          <div class="quote">@home.quote</div>
+          @if (home.reviews.length != 0) {
+            @{
+              var firstReview = home.reviews[0].body
+            }
+            <div class="quote">@firstReview</div>
+          }
         </a>
         <a href="#/homes/@home.id/reviews/new">
           <button>Share your tips about this rental</button>
