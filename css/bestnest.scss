@@ -16,11 +16,6 @@ a:hover {
   color:$textColor;
   text-decoration:none;
 }
-textarea {
-  padding:15px;
-  width:100%;
-  color:$textColor;
-}
 .glyphicon {
   color:$primaryColor;
 }
@@ -252,6 +247,22 @@ button {
   p {
     font-style:italic;
   }
+}
+textarea {
+  border:1px solid $textColor;
+  color:$textColor;
+  padding:15px;
+  padding-top:5px;
+  padding-bottom:5px;
+  resize:none;
+  width:100%;
+}
+input.name {
+  border:1px solid $textColor;
+  line-height:2em;
+  padding-left:15px;
+  padding-right:15px;
+  width:100%;
 }
 .input-title {
   margin:0 auto;
