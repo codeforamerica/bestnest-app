@@ -17,6 +17,7 @@ var LeaveReviewView = AmpersandView.extend({
   render: function (homeId) {
     // this is wrong, it should be in a model
     this.homeId = homeId
+    var username = window.localStorage.getItem('bestnest:username')
     var view = this
     view.el = view.el || document.createElement('div')
     return api.getHome(homeId)
@@ -24,6 +25,9 @@ var LeaveReviewView = AmpersandView.extend({
         var home = model.toJSON()
         var html = template(home)
         $(view.el).html(html)
+        if (username != undefined) {
+          $('input.name').val(username)
+        }
       })
   },
   leaveReview: function () {
@@ -31,6 +35,9 @@ var LeaveReviewView = AmpersandView.extend({
     var subject = 'homes/' + view.homeId
     var name = $('.name', view.el).val()
     var review = $('.review', view.el).val()
+
+    window.localStorage.setItem('bestnest:username', name)
+
     $(view.el).addClass('waiting')
     api.postComment(subject, name, review)
       .then(function () {
