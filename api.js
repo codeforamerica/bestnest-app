@@ -127,13 +127,6 @@ function getHome(id) {
     .then(handleHomeReponse)
 }
 
-function getReviews(id) {
-  return fetch('homes/'+id+'/reviews')
-    .then(function(json) {
-      console.log(json)
-    })
-}
-
 function handleCodeViolationReponse(json) {
   return json.data
 }
@@ -168,7 +161,6 @@ function fetch(endpoint) {
   })
 }
 
-module.exports.getReviews = getReviews
 module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
