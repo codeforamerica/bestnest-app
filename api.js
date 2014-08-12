@@ -30,6 +30,7 @@ function formatPhone(number) {
 }
 
 function mapHomeReponse(json) {
+  var reviews = []
   var data = []
   var owner = {}
 
@@ -42,6 +43,9 @@ function mapHomeReponse(json) {
       owner.state = json[dataset].state
       owner.phonePlain = json[dataset].phone
       owner.phoneFormatted = formatPhone(json[dataset].phone)
+    }
+    else if (dataset === 'comments') {
+      reviews = json['comments']
     }
     else {
       var label = labels[dataset]
@@ -98,6 +102,7 @@ function mapHomeReponse(json) {
   }
 
   return {
+    'reviews': reviews,
     'data': data,
     'owner': owner
   }
@@ -107,18 +112,26 @@ function handleHomeReponse(json) {
   var data = mapHomeReponse(json.data)
   var home = new HomeModel({
     id: json.id,
-    quote: json.quote || 'This is a great place to live. I can\'t say enough nice things about the house...',
     address: json.address,
     type: json.type || 'Single family home',
+    reviews: data.reviews,
     data: data.data,
     owner: data.owner
   })
+
   return home
 }
 
 function getHome(id) {
   return fetch('homes/'+id)
     .then(handleHomeReponse)
+}
+
+function getReviews(id) {
+  return fetch('homes/'+id+'/reviews')
+    .then(function(json) {
+      console.log(json)
+    })
 }
 
 function handleCodeViolationReponse(json) {
@@ -144,8 +157,6 @@ function getLandlord(id) {
     .then(handleLandlordResponse)
 }
 
-
-
 function search(text) {
   return fetch('search?q=' + encodeURIComponent(text))
 }
@@ -157,6 +168,7 @@ function fetch(endpoint) {
   })
 }
 
+module.exports.getReviews = getReviews
 module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
