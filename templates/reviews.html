@@ -1,4 +1,4 @@
-@!(homeId)
+@!(home)
 <div>
   <nav class="nav navbar">
     <div class="container">
@@ -12,39 +12,36 @@
   </nav>
   <div class="container">
     <div class="row">
-      <a href="#/homes/@homeId/reviews/new">
+      <a href="#/homes/@home.id/reviews/new">
         <button>Share your tips about this rental</button>
       </a>
     </div>
+    @if (home.reviews.length === 0) {
     <div class="row">
-      <div class="review">
-        <div class="review-text">
-          "This is a great place to live, I can't say enough nice things about the house or about the landlord Betty. The old dishwasher broke and she had a new one working the next day!"
-        </div>
-        <div class="review-author">
-          <div class="author">
-            Julie Robinson
+        <h1>Be the first to share your tips about this rental.</h1>
+    </div>
+    }
+    else {
+      @home.reviews.map(function (review) {
+      <div class="row">
+        <div class="review">
+          <div class="review-text">
+            "@review.body"
           </div>
-          <div class="date">
-            Jan 30, 2014
+          <div class="review-author">
+            <div class="author">
+              @review.name
+            </div>
+            <div class="date">
+              @{
+                var date = new Date(review.date)
+              }
+              @date.toDateString()
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="review">
-        <div class="review-text">
-          "This is a great place to live, I can't say enough nice things about the house or about the landlord Betty. The old dishwasher broke and she had a new one working the next day!"
-        </div>
-        <div class="review-author">
-          <div class="author">
-            Julie Robinson
-          </div>
-          <div class="date">
-            Jan 30, 2014
-          </div>
-        </div>
-      </div>
-    </div>
+      })
+    }
   </div>
 </div>
