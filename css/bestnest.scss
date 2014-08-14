@@ -16,6 +16,14 @@ a:hover {
   color:$textColor;
   text-decoration:none;
 }
+img.streetView {
+  min-height: 300px;
+}
+textarea {
+  padding:15px;
+  width:100%;
+  color:$textColor;
+}
 .glyphicon {
   color:$primaryColor;
 }
