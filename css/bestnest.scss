@@ -131,6 +131,10 @@ button {
   display:block;
   margin-top:10px;
 }
+.waiting button {
+  background-color:$primaryColor;
+  color:white;
+}
 .logo {
   width:70%;
   margin:0 auto;
@@ -252,6 +256,22 @@ button {
   p {
     font-style:italic;
   }
+}
+textarea {
+  border:1px solid $textColor;
+  color:$textColor;
+  padding:15px;
+  padding-top:5px;
+  padding-bottom:5px;
+  resize:none;
+  width:100%;
+}
+input.name {
+  border:1px solid $textColor;
+  line-height:2em;
+  padding-left:15px;
+  padding-right:15px;
+  width:100%;
 }
 .input-title {
   margin:0 auto;
