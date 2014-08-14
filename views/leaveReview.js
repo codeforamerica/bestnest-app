@@ -47,6 +47,7 @@ var LeaveReviewView = AmpersandView.extend({
       })
       .then(function () {
         $(view.el).removeClass('waiting')
+        window.location.hash = '#/homes/'+view.homeId+'/reviews'
       })
   }
 })
