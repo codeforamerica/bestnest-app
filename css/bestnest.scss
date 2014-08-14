@@ -124,7 +124,8 @@ button {
   margin-top:10px;
 }
 .waiting button {
-  font-style: italic;
+  background-color:$primaryColor;
+  color:white;
 }
 .logo {
   width:70%;
