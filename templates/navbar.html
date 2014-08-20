@@ -11,6 +11,9 @@
     <span class="back-label">Back</span>
   </span>
   }
+  else {
+  <span></span>
+  }
 
   @{
     title = config.title(model)
@@ -20,5 +23,8 @@
   @if ((config.search &! config.done) || (config.search && config.done)) {
   <a href="#" class="glyphicon glyphicon-search">
   </a>
+  }
+  else {
+    <span></span>
   }
 </div>
