@@ -1,109 +1,101 @@
-  @!(home)
-    <nav class="nav navbar">
-      <div class="container">
-        <span class="back"></span>
-        <span class="title">@home.address</span>
-        <a href="#" class="glyphicon glyphicon-search">
-        </a>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="row street-view">
+@!(home)
+<div class="container">
+  <div class="row street-view">
+    @{
+    var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=500x300&location='
+      + encodeURIComponent(home.address)
+      + ',%20chattanooga,%20tn'
+    }
+    <a href="#/homes/@home.id/reviews">
+      <img class="streetView" src="@imageUrl">
+    </a>
+  </div>
+  <div class="row main-review review">
+    <a href="#/homes/@home.id/reviews">
+      @if (home.reviews.length != 0) {
         @{
-        var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=500x300&location='
-          + encodeURIComponent(home.address)
-          + ',%20chattanooga,%20tn'
+          var firstReview = home.reviews[0].body
         }
-        <a href="#/homes/@home.id/reviews">
-          <img class="streetView" src="@imageUrl">
-        </a>
-      </div>
-      <div class="row main-review review">
-        <a href="#/homes/@home.id/reviews">
-          @if (home.reviews.length != 0) {
-            @{
-              var firstReview = home.reviews[0].body
-            }
-            <div class="quote">@firstReview</div>
-          }
-        </a>
-        <a href="#/homes/@home.id/reviews/new">
-          <button>Share your tips about this rental</button>
-        </a>
-      </div>
-      @{
-        home.data.sort(function (a, b) {
-          return a.order - b.order
-        })
+        <div class="quote">@firstReview</div>
       }
-      @home.data.map(function (dataset) {
-        <div class="row data-row">
-        @if (dataset.items.length != 0) {
-          @if (dataset.hasDetail) {
-          <a href="#/homes/@home.id/@dataset.id">
-            <div class="chevron right"></div>
-          }
-          <h2>@dataset.label</h2>
-          @if (dataset.items) {
-            <ul>
-              @dataset.items.map(function (item) {
-                <li>
-                  @if (typeof item === 'object') {
-                    @item.text
-                  } else {
-                    @item
-                  }
-                  @if (item.description) {
-                    <p>@item.description</p>
-                  }
-                </li>
-              })
-            </ul>
-          }
-          @if (dataset.hasDetail) {
-          </a>
-          }
-        }
-        else {
-          <h2>@dataset.label</h2>
-          <ul>
-            <li>There are no @dataset.label.toLowerCase() for this property</li>
-          </ul>
-        }
-        <div class="border"></div>
-      </div>
+    </a>
+    <a href="#/homes/@home.id/reviews/new">
+      <button>Share your tips about this rental</button>
+    </a>
+  </div>
+  @{
+    home.data.sort(function (a, b) {
+      return a.order - b.order
     })
-      <div class="row data-row">
-        <a href="#/landlords/@home.owner.id">
-          <div class="chevron right"></div>
-          <h2>Owner</h2>
-          <p>@home.owner.name</p>
-          <p>@home.owner.streetAddress</p>
-          <p>@home.owner.city, @home.owner.state</p>
-          <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
-        </a>
-      </div>
-      <div class="ugc-row row" id="ugc-first">
-        <div class="col-xs-12 col-sm-4">
-          <h2>Lease Type</h2>
-          <p>Long-term</p>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <h2>Heating</h2>
-          <p>Gas Heat</p>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <h2>Pets Allowed?</h2>
-          <p>No</p>
-        </div>
-      </div>
-      <div class="ugc-row row">
-        <p>* User Contributed Content</p>
-      </div>
-      <div class="ugc-row row">
-        <a href="#/homes/@home.id/questions">
-          <button>Contribute Information</button>
-        </a>
-      </div>
+  }
+  @home.data.map(function (dataset) {
+    <div class="row data-row">
+    @if (dataset.items.length != 0) {
+      @if (dataset.hasDetail) {
+      <a href="#/homes/@home.id/@dataset.id">
+        <div class="chevron right"></div>
+      }
+      <h2>@dataset.label</h2>
+      @if (dataset.items) {
+        <ul>
+          @dataset.items.map(function (item) {
+            <li>
+              @if (typeof item === 'object') {
+                @item.text
+              } else {
+                @item
+              }
+              @if (item.description) {
+                <p>@item.description</p>
+              }
+            </li>
+          })
+        </ul>
+      }
+      @if (dataset.hasDetail) {
+      </a>
+      }
+    }
+    else {
+      <h2>@dataset.label</h2>
+      <ul>
+        <li>There are no @dataset.label.toLowerCase() for this property</li>
+      </ul>
+    }
+    <div class="border"></div>
+  </div>
+})
+  <div class="row data-row">
+    <a href="#/landlords/@home.owner.id">
+      <div class="chevron right"></div>
+      <h2>Owner</h2>
+      <p>@home.owner.name</p>
+      <p>@home.owner.streetAddress</p>
+      <p>@home.owner.city, @home.owner.state</p>
+      <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
+    </a>
+  </div>
+  <div class="ugc-row row" id="ugc-first">
+    <div class="col-xs-12 col-sm-4">
+      <h2>Lease Type</h2>
+      <p>Long-term</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <h2>Heating</h2>
+      <p>Gas Heat</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <h2>Pets Allowed?</h2>
+      <p>No</p>
     </div>
   </div>
+  <div class="ugc-row row">
+    <p>* User Contributed Content</p>
+  </div>
+  <div class="ugc-row row">
+    <a href="#/homes/@home.id/questions">
+      <button>Contribute Information</button>
+    </a>
+  </div>
+</div>
+</div>

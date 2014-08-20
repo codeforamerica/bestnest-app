@@ -1,23 +1,10 @@
 @!(violations)
-@console.log('violations', violations)
-<div>
-  <nav class="nav navbar">
-    <div class="container">
-      <span class="back">
-        <div class="chevron left"></div>
-        <span class="back-label">Back</span>
-      </span>
-      <span class="title">Violations (@violations.length)</span>
-      <span class="glyphicon glyphicon-search"></span>
-    </div>
-  </nav>
-  <div class="container">
-    @violations.map(function (violation) {
-    <div class="row">
-      <h2>@violation.caseType</h2>
-      <time>@violation.dateEntered</time>
-      <p class="violation-description">@violation.description</p>
-    </div>
-    })
+<div class="container">
+  @violations.map(function (violation) {
+  <div class="row">
+    <h2>@violation.caseType</h2>
+    <time>@violation.dateEntered</time>
+    <p class="violation-description">@violation.description</p>
   </div>
+  })
 </div>

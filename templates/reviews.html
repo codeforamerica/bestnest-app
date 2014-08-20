@@ -1,47 +1,35 @@
 @!(home)
-<div>
-  <nav class="nav navbar">
-    <div class="container">
-      <span class="back">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="back-label">Back</span>
-      </span>
-      <span class="title">Reviews</span>
-      <span class="glyphicon glyphicon-search"></span>
-    </div>
-  </nav>
-  <div class="container">
+<div class="container">
+  <div class="row">
+    <a href="#/homes/@home.id/reviews/new">
+      <button>Share your tips about this rental</button>
+    </a>
+  </div>
+  @if (home.reviews.length === 0) {
+  <div class="row">
+      <h1>Be the first to share your tips about this rental.</h1>
+  </div>
+  }
+  else {
+    @home.reviews.map(function (review) {
     <div class="row">
-      <a href="#/homes/@home.id/reviews/new">
-        <button>Share your tips about this rental</button>
-      </a>
-    </div>
-    @if (home.reviews.length === 0) {
-    <div class="row">
-        <h1>Be the first to share your tips about this rental.</h1>
-    </div>
-    }
-    else {
-      @home.reviews.map(function (review) {
-      <div class="row">
-        <div class="review">
-          <div class="review-text">
-            "@review.body"
+      <div class="review">
+        <div class="review-text">
+          "@review.body"
+        </div>
+        <div class="review-author">
+          <div class="author">
+            @review.name
           </div>
-          <div class="review-author">
-            <div class="author">
-              @review.name
-            </div>
-            <div class="date">
-              @{
-                var date = new Date(review.date)
-              }
-              @date.toDateString()
-            </div>
+          <div class="date">
+            @{
+              var date = new Date(review.date)
+            }
+            @date.toDateString()
           </div>
         </div>
       </div>
-      })
-    }
-  </div>
+    </div>
+    })
+  }
 </div>
