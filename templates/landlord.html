@@ -1,27 +1,15 @@
 @!(landlord)
-<div>
-  <nav class="nav navbar">
-    <div class="container">
-      <span class="back">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="back-label">Back</span>
-      </span>
-      <span class="title">Landlord</span>
-      <span class="glyphicon glyphicon-search"></span>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <h1>Properties owned by @landlord.name</h1>
-    </div>
-    @landlord.data.map(function (result) {
-    <div class="row">
-      <a href="#homes/@result.id">
-        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        <h2>@result.address</h2>
-        <p>@result.city, @result.state</p>
-      </a>
-    </div>
-  })
+<div class="container">
+  <div class="row">
+    <h1>Properties owned by @landlord.name</h1>
   </div>
+  @landlord.data.map(function (result) {
+  <div class="row">
+    <a href="#homes/@result.id">
+      <div class="chevron right"></div>
+      <h2>@result.address</h2>
+      <p>@result.city, @result.state</p>
+    </a>
+  </div>
+})
 </div>

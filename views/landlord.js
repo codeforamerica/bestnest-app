@@ -20,7 +20,7 @@ var LandlordView = AmpersandView.extend({
         var html = template(model)
         $(view.el).html(html)
       })
-  }
+  },
 })
 
 module.exports = LandlordView
