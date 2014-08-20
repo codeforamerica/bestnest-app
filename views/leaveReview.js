@@ -25,6 +25,7 @@ var LeaveReviewView = AmpersandView.extend({
         var home = model.toJSON()
         var html = template(home)
         $(view.el).html(html)
+
         if (username != undefined) {
           $('input.name').val(username)
         }
