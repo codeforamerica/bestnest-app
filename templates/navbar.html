@@ -1,0 +1,24 @@
+@!(model, config)
+
+@{
+  console.log('model', model)
+}
+
+<div class="container">
+  @if (config.back) {
+  <span class="back">
+    <div class="chevron left"></div>
+    <span class="back-label">Back</span>
+  </span>
+  }
+
+  @{
+    title = config.title(model)
+  }
+  <span class="title">@title</span>
+
+  @if ((config.search &! config.done) || (config.search && config.done)) {
+  <a href="#" class="glyphicon glyphicon-search">
+  </a>
+  }
+</div>

@@ -2,6 +2,7 @@ var $ = require('jquery')
 
 var viewConstructors = {
   index: require('./views/index'),
+  navbar: require('./views/navbar'),
   summary: require('./views/summary'),
   utilities: require('./views/violations'),
   violations: require('./views/violations'),
@@ -13,8 +14,6 @@ var viewConstructors = {
 
 var viewCache = {
 }
-
-var rootElement
 
 function getView (viewName) {
   if (viewCache[viewName]) {
@@ -28,14 +27,20 @@ function getView (viewName) {
 function initialize (opt) {
   opt = opt || {}
   rootElement = $(opt.rootElement)
+  navElement = $(opt.navElement)
+  contentElement = $(opt.contentElement)
 }
 
 function show(viewName, homeId) {
   console.log('show', viewName)
+  var navbar = getView('navbar')
   var view = getView(viewName)
 
+  navbar.render(viewName, homeId)
   view.render(homeId)
-  $(rootElement).empty().append(view.el)
+
+  $(navElement).replaceWith(navbar.el)
+  $(contentElement).replaceWith(view.el)
 }
 
 module.exports.initialize = initialize
