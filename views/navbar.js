@@ -74,7 +74,7 @@ var NavbarView = AmpersandView.extend({
       search: true,
       done: false,
       title: function (landlord) {
-        return landlord.name
+        return 'Owner' 
       }
     }
 
