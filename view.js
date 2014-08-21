@@ -39,8 +39,8 @@ function show(viewName, homeId) {
   navbar.render(viewName, homeId)
   view.render(homeId)
 
-  $(navElement).replaceWith(navbar.el)
-  $(contentElement).replaceWith(view.el)
+  $(navElement).empty().append(navbar.el)
+  $(contentElement).empty().append(view.el)
 }
 
 module.exports.initialize = initialize
