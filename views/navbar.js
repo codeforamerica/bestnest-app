@@ -17,7 +17,7 @@ viewConfig['index'] = {
   done: false
 }
 viewConfig['summary'] = {
-  back: false,
+  back: true,
   searchIcon: true,
   searchBar: false,
   done: false,
