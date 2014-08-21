@@ -1,30 +1,31 @@
 @!(model, config)
-
-@{
-  console.log('model', model)
-}
-
 <div class="container">
-  @if (config.back) {
-  <span class="back">
-    <div class="chevron left"></div>
-    <span class="back-label">Back</span>
-  </span>
+  @if (config.searchBar) {
+    <span class="glyphicon glyphicon-search inside-input"></span>
+    <input type="text" class="typeahead" name="address-search" id="address-search" placeholder="Search">
   }
   else {
-  <span></span>
-  }
-
-  @{
-    title = config.title(model)
-  }
-  <span class="title">@title</span>
-
-  @if ((config.search &! config.done) || (config.search && config.done)) {
-  <a href="#" class="glyphicon glyphicon-search">
-  </a>
-  }
-  else {
+    @if (config.back) {
+    <span class="back">
+      <div class="chevron left"></div>
+      <span class="back-label">Back</span>
+    </span>
+    }
+    else {
     <span></span>
+    }
+
+    @{
+      title = config.title(model)
+    }
+    <span class="title">@title</span>
+
+    @if ((config.searchIcon &! config.done) || (config.searchIcon && config.done)) {
+    <a href="#" class="glyphicon glyphicon-search">
+    </a>
+    }
+    else {
+      <span></span>
+    }
   }
 </div>
