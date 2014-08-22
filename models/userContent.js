@@ -32,5 +32,5 @@ var UserContent = State.extend({
 
 })
 
-modules.export = UserContent
-modules.export.allowed = allowed
+module.exports = UserContent
+module.exports.allowed = allowed

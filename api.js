@@ -182,8 +182,28 @@ function postComment(subject, name, body) {
   })
 }
 
+function postUserContent(homeId, model) {
+  if (!model.isValid()) {
+    throw new Error('invalid model')
+  }
+  
+  return $.ajax({
+    url: root + '/homes/' + homeId + '/data',
+    data: JSON.stringify(model.toJSON()),
+    type: 'POST',
+    contentType: 'application/json'
+  }).then(function (body, state, xhr) {
+    // don't be fooled: jquery promises aren't real promises
+    // ES Promises only have 1 value, not 3 :/
+    if (xhr.status !== 201) {
+      throw new Error('posting content was not successful')
+    }
+  })
+}
+
 module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
 module.exports.search = search
 module.exports.postComment = postComment
+module.exports.postUserContent = postUserContent
