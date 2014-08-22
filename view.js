@@ -4,7 +4,7 @@ var viewConstructors = {
   index: require('./views/index'),
   navbar: require('./views/navbar'),
   summary: require('./views/summary'),
-  utilities: require('./views/violations'),
+  utilities: require('./views/utilities'),
   violations: require('./views/violations'),
   reviews: require('./views/reviews'),
   questions: require('./views/questions'),
