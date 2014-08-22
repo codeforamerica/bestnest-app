@@ -1,101 +1,110 @@
-@!(home)
-<div class="container">
-  <div class="row street-view">
-    @{
-    var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=500x300&location='
-      + encodeURIComponent(home.address)
-      + ',%20chattanooga,%20tn'
-    }
-    <a href="#/homes/@home.id/reviews">
-      <img class="streetView" src="@imageUrl">
-    </a>
-  </div>
-  <div class="row main-review review">
-    <a href="#/homes/@home.id/reviews">
-      @if (home.reviews.length != 0) {
+  @!(home)
+    <div class="container">
+      <div class="desktop-col visuals">
+      <div class="row street-view">
         @{
-          var firstReview = home.reviews[0].body
+        var imageUrl = 'https://maps.googleapis.com/maps/api/streetview?size=500x300&location='
+          + encodeURIComponent(home.address)
+          + ',%20chattanooga,%20tn'
         }
-        <div class="quote">@firstReview</div>
+        <a href="#/homes/@home.id/reviews">
+          <img class="streetView" src="@imageUrl">
+        </a>
+      </div>
+
+
+      <div class="row map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.1190903573683!2d-122.42111979999997!3d37.763805699999956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e2300112791%3A0x4fd453f72c384031!2s83+Rondel+Pl%2C+San+Francisco%2C+CA+94103!5e0!3m2!1sen!2sus!4v1407455478427" width="100%" height="300px" frameborder="0" style="border:0"></iframe>
+      </div>
+      </div>
+      <div class="desktop-col data">
+      <div class="row main-review review">
+        <a href="#/homes/@home.id/reviews">
+          @if (home.reviews.length != 0) {
+            @{
+              var firstReview = home.reviews[0].body
+            }
+            <div class="quote">@firstReview</div>
+          }
+        </a>
+        <a href="#/homes/@home.id/reviews/new">
+          <button>Share your tips about this rental</button>
+        </a>
+      </div>
+      @{
+        home.data.sort(function (a, b) {
+          return a.order - b.order
+        })
       }
-    </a>
-    <a href="#/homes/@home.id/reviews/new">
-      <button>Share your tips about this rental</button>
-    </a>
-  </div>
-  @{
-    home.data.sort(function (a, b) {
-      return a.order - b.order
+      @home.data.map(function (dataset) {
+        <div class="row data-row">
+        @if (dataset.items.length != 0) {
+          @if (dataset.hasDetail) {
+          <a href="#/homes/@home.id/@dataset.id">
+            <div class="chevron right"></div>
+          }
+          <h2>@dataset.label</h2>
+          @if (dataset.items) {
+            <ul>
+              @dataset.items.map(function (item) {
+                <li>
+                  @if (typeof item === 'object') {
+                    @item.text
+                  } else {
+                    @item
+                  }
+                  @if (item.description) {
+                    <p>@item.description</p>
+                  }
+                </li>
+              })
+            </ul>
+          }
+          @if (dataset.hasDetail) {
+          </a>
+          }
+        }
+        else {
+          <h2>@dataset.label</h2>
+          <ul>
+            <li>There are no @dataset.label.toLowerCase() for this property</li>
+          </ul>
+        }
+        <div class="border"></div>
+      </div>
     })
-  }
-  @home.data.map(function (dataset) {
-    <div class="row data-row">
-    @if (dataset.items.length != 0) {
-      @if (dataset.hasDetail) {
-      <a href="#/homes/@home.id/@dataset.id">
-        <div class="chevron right"></div>
-      }
-      <h2>@dataset.label</h2>
-      @if (dataset.items) {
-        <ul>
-          @dataset.items.map(function (item) {
-            <li>
-              @if (typeof item === 'object') {
-                @item.text
-              } else {
-                @item
-              }
-              @if (item.description) {
-                <p>@item.description</p>
-              }
-            </li>
-          })
-        </ul>
-      }
-      @if (dataset.hasDetail) {
-      </a>
-      }
-    }
-    else {
-      <h2>@dataset.label</h2>
-      <ul>
-        <li>There are no @dataset.label.toLowerCase() for this property</li>
-      </ul>
-    }
-    <div class="border"></div>
-  </div>
-})
-  <div class="row data-row">
-    <a href="#/landlords/@home.owner.id">
-      <div class="chevron right"></div>
-      <h2>Owner</h2>
-      <p>@home.owner.name</p>
-      <p>@home.owner.streetAddress</p>
-      <p>@home.owner.city, @home.owner.state</p>
-      <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
-    </a>
-  </div>
-  <div class="ugc-row row" id="ugc-first">
-    <div class="col-xs-12 col-sm-4">
-      <h2>Lease Type</h2>
-      <p>Long-term</p>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <h2>Heating</h2>
-      <p>Gas Heat</p>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <h2>Pets Allowed?</h2>
-      <p>No</p>
+      <div class="row data-row">
+        <a href="#/landlords/@home.owner.id">
+          <div class="chevron right"></div>
+          <h2>Owner</h2>
+          <p>@home.owner.name</p>
+          <p>@home.owner.streetAddress</p>
+          <p>@home.owner.city, @home.owner.state</p>
+          <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
+        </a>
+      </div>
+      <div class="ugc-row row" id="ugc-first">
+        <div class="col-xs-12 col-sm-4">
+          <h2>Lease Type</h2>
+          <p>Long-term</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <h2>Heating</h2>
+          <p>Gas Heat</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <h2>Pets Allowed?</h2>
+          <p>No</p>
+        </div>
+      </div>
+      <div class="ugc-row row">
+        <p>* User Contributed Content</p>
+      </div>
+      <div class="ugc-row row">
+        <a href="#/homes/@home.id/questions">
+          <button>Contribute Information</button>
+        </a>
+      </div>
+      </div>
     </div>
   </div>
-  <div class="ugc-row row">
-    <p>* User Contributed Content</p>
-  </div>
-  <div class="ugc-row row">
-    <a href="#/homes/@home.id/questions">
-      <button>Contribute Information</button>
-    </a>
-  </div>
-</div>
-</div>
