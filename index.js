@@ -5,13 +5,11 @@ var view = require('./view')
 
 $(document).ready(function () {
 
-  options = {
+  view.initialize({
     rootElement:'#outer',
     navElement:'nav',
     contentElement: 'content'
-  }
-
-  view.initialize(options)
+  })
 
   var router = new Router()
 
