@@ -186,9 +186,9 @@ function postUserContent(homeId, model) {
   if (!model.isValid()) {
     throw new Error('invalid model')
   }
-  
+
   return $.ajax({
-    url: root + '/homes/' + homeId + '/data',
+    url: root + 'homes/' + homeId + '/data',
     data: JSON.stringify(model.toJSON()),
     type: 'POST',
     contentType: 'application/json'
