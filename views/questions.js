@@ -24,6 +24,10 @@ var QuestionsView = AmpersandView.extend({
   },
   sendContent: function (e) {
     var button = $(e.target)
+
+    button.addClass('selected')
+    button.siblings().removeClass('selected')
+
     var content = new UserContent({rel: button.parent().attr('rel'), value: button.text()})
     api.postUserContent(this.homeId, content)
   }

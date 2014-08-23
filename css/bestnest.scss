@@ -134,7 +134,7 @@ button {
   display:block;
   margin-top:10px;
 }
-.waiting button {
+.waiting button, button.selected {
   background-color:$primaryColor;
   color:white;
 }
