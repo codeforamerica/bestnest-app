@@ -32,6 +32,7 @@ function formatPhone(number) {
 function mapHomeReponse(json) {
   var reviews = []
   var data = []
+  var userContent
   var owner = {}
 
   for (dataset in json) {
@@ -46,6 +47,10 @@ function mapHomeReponse(json) {
     }
     else if (dataset === 'comments') {
       reviews = json['comments']
+    }
+    else if (dataset === 'userContent') {
+      
+      userContent = json['userContent']
     }
     else {
       var label = labels[dataset]
@@ -103,6 +108,7 @@ function mapHomeReponse(json) {
 
   return {
     'reviews': reviews,
+    'userContent': userContent,
     'data': data,
     'owner': owner
   }
@@ -115,6 +121,7 @@ function handleHomeReponse(json) {
     address: json.address,
     type: json.type || 'Single family home',
     reviews: data.reviews,
+    userContent: data.userContent,
     data: data.data,
     owner: data.owner
   })

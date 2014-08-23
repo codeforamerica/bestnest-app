@@ -83,18 +83,21 @@
           <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
         </a>
       </div>
+      @{
+        console.log(home.userContent)
+      }
       <div class="ugc-row row" id="ugc-first">
         <div class="col-xs-12 col-sm-4">
           <h2>Lease Type</h2>
-          <p>Long-term</p>
+          <p>@home.userContent.lease</p>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h2>Heating</h2>
-          <p>Gas Heat</p>
+          <p>@home.userContent.heat</p>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h2>Pets Allowed?</h2>
-          <p>No</p>
+          <p>@home.userContent['pets-allowed']</p>
         </div>
       </div>
       <div class="ugc-row row">
