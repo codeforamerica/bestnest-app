@@ -35,6 +35,7 @@ function show(viewName, homeId) {
   console.log('show', viewName)
   var navbar = getView('navbar')
   var view = getView(viewName)
+  view.homeId = homeId
 
   navbar.render(viewName, homeId)
   view.render(homeId)
