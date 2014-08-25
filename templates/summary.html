@@ -88,18 +88,28 @@
           <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
         </a>
       </div>
+      @{
+        function handleUserContent(content) {
+          if (content === undefined) {
+            return 'Unknown'
+          }
+          else {
+            return content
+          }
+        }
+      }
       <div class="ugc-row row" id="ugc-first">
         <div class="col-xs-12 col-sm-4">
           <h2>Lease Type</h2>
-          <p>Long-term</p>
+          <p>@handleUserContent(home.userContent.lease)</p>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h2>Heating</h2>
-          <p>Gas Heat</p>
+          <p>@handleUserContent(home.userContent.heat)</p>
         </div>
         <div class="col-xs-12 col-sm-4">
           <h2>Pets Allowed?</h2>
-          <p>No</p>
+          <p>@handleUserContent(home.userContent['pets-allowed'])</p>
         </div>
       </div>
       <div class="ugc-row row">
