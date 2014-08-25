@@ -62,6 +62,11 @@ gulp.task('css-dev', function () {
     .pipe(gulp.dest('./build/dev/'))
 })
 
+gulp.task('img-dev', function() {
+  return gulp.src('./img/**')
+    .pipe(gulp.dest('./build/dev/img'))
+})
+
 gulp.task('clean', function (cb) {
   return del('./build', cb)
 })
@@ -91,7 +96,7 @@ gulp.task('watchify', function () {
 
 gulp.task('dev', function (cb) {
   run('clean',
-    ['watchify','html-dev','css-dev'],
+    ['watchify','html-dev','css-dev', 'img-dev'],
     function (err) {
       if (err) { return cb(err) }
       gulp.watch('./index.html', ['html-dev'])
