@@ -5,6 +5,7 @@ var Home = AmpersandModel.extend({
     address: 'string',
     type: 'string',
     reviews: 'object',
+    userContent: 'object',
     data: 'object',
     owner: 'object'
   }
