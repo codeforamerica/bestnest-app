@@ -60,6 +60,7 @@ nav.navbar {
     font-size:1.3em;
   }
   .back {
+    cursor:pointer;
     margin-right:auto;
     position:relative;
   }
@@ -67,6 +68,10 @@ nav.navbar {
     position:absolute;
     left:25px;
     top:-10px;
+  }
+  .done, .post {
+    color:$primaryColor;
+    cursor:pointer;
   }
   .title {
     color:$largeTextColor;
