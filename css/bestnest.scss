@@ -19,6 +19,11 @@ a:hover {
 img.streetView {
   min-height: 300px;
 }
+input, textarea {
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 textarea {
   padding:15px;
   width:100%;
