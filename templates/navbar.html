@@ -11,18 +11,14 @@
       <span class="back-label">Back</span>
     </span>
     }
-    else {
-    <span></span>
+    else if (config.cancel) {
+    <span class="cancel">Cancel</span>
     }
 
     @{
       title = config.title(model)
     }
     <span class="title">@title</span>
-
-    @{
-      console.log('config', config)
-    }
 
     @if ((config.searchIcon &! config.done) || (config.searchIcon && config.done)) {
       <a href="#" class="glyphicon glyphicon-search pull-right">

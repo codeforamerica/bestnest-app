@@ -50,7 +50,8 @@ viewConfig['reviews'] = {
   }
 }
 viewConfig['leaveReview'] = {
-  back: true,
+  back: false,
+  cancel: true,
   searchIcon: false,
   searchBar: false,
   done: false,
@@ -86,6 +87,7 @@ var NavbarView = AmpersandView.extend({
   events: {
     'keypress #address-search': 'addressSearch',
     'click .back': 'goBack',
+    'click .cancel': 'goBack',
     'click .search': 'goSearch',
     'click .post': 'postReview'
   },
@@ -136,7 +138,6 @@ var NavbarView = AmpersandView.extend({
   postReview: function() {
     var textarea = $('textarea')
     var subject = window.location.hash.split('/').slice(1,3).join('/')
-    console.log('subject', subject)
     api.postComment(subject, 'Jeremia', textarea.val())
       .then(function(result) {
         window.location.hash = window.location.hash.split('/').slice(0,4).join('/')
