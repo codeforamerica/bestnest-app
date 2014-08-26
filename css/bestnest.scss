@@ -51,6 +51,7 @@ nav.navbar {
     width:100%;
   }
   .container * {
+    -webkit-flex-grow:1;
     flex-grow:1;
   }
   a {
