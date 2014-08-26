@@ -20,12 +20,16 @@
     }
     <span class="title">@title</span>
 
-    @if ((config.searchIcon &! config.done) || (config.searchIcon && config.done)) {
-    <a href="#" class="glyphicon glyphicon-search">
-    </a>
+    @{
+      console.log('config', config)
     }
-    else {
-      <span></span>
+
+    @if ((config.searchIcon &! config.done) || (config.searchIcon && config.done)) {
+      <a href="#" class="glyphicon glyphicon-search pull-right">
+      </a>
+    }
+    else if (config.done) {
+      <span class="done pull-right">Done</span>
     }
   }
 </div>

@@ -55,7 +55,7 @@ viewConfig['leaveReview'] = {
   searchBar: false,
   done: true,
   title: function() {
-    return 'Leave a review'
+    return 'Leave a tip'
   }
 }
 viewConfig['questions'] = {
