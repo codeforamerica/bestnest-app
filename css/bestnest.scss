@@ -79,7 +79,7 @@ nav.navbar {
     margin-top:15px;
     margin-left:5px;
   }
-  .glyphicon-search {
+  .glyphicon-search, .pull-right {
     text-align:right;
   }
   input[type="text"] {
@@ -262,7 +262,7 @@ button {
 }
 
 textarea {
-  border:1px solid $textColor;
+  border:none;
   color:$textColor;
   padding:15px;
   padding-top:5px;
@@ -278,11 +278,18 @@ input.name {
   width:100%;
 }
 .input-title {
+  background-color:white;
   margin:0 auto;
-  width:80%;
+  margin-top:10px;
+  width:100%;
 }
 .input-title h2 {
+  border-bottom:1px solid $textColor;
+  padding-bottom:10px;
   text-transform:none;
+}
+.tip-text {
+  padding-top:0;
 }
 .button-group {
   width:100%;
