@@ -67,6 +67,11 @@ gulp.task('img-dev', function() {
     .pipe(gulp.dest('./build/dev/img'))
 })
 
+gulp.task('img-release', function() {
+  return gulp.src('./img/**')
+    .pipe(gulp.dest('./build/release/img/'))
+})
+
 gulp.task('clean', function (cb) {
   return del('./build', cb)
 })
@@ -74,7 +79,7 @@ gulp.task('clean', function (cb) {
 
 gulp.task('build-release', function (cb) {
   run('clean',
-    ['html-release', 'browserify-release', 'css-release', 'enginelight'],
+    ['html-release', 'browserify-release', 'css-release', 'img-release', 'enginelight'],
     cb)
 
 })
@@ -101,6 +106,7 @@ gulp.task('dev', function (cb) {
       if (err) { return cb(err) }
       gulp.watch('./index.html', ['html-dev'])
       gulp.watch('./css/*.scss', ['css-dev'])
+      gulp.watch('./img/**', ['img-dev'])
       cb()
     })
 })
