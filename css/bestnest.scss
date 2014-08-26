@@ -262,6 +262,7 @@ button {
 }
 
 textarea {
+  background-color:white;
   border:none;
   color:$textColor;
   padding:15px;
@@ -277,13 +278,13 @@ input.name {
   padding-right:15px;
   width:100%;
 }
-.input-title {
+.input-title.textarea-label {
   background-color:white;
   margin:0 auto;
   margin-top:10px;
   width:100%;
 }
-.input-title h2 {
+.input-title.textarea-label h2 {
   border-bottom:1px solid $textColor;
   padding-bottom:10px;
   text-transform:none;
