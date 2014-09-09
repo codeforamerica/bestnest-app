@@ -1,0 +1,7 @@
+.question > div {
+  transition: all 1s;
+}
+div.animateOut {
+  transform: translateX(-80px);
+  opacity:0;
+}
