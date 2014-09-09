@@ -25,6 +25,15 @@ viewConfig['summary'] = {
     return home.address
   }
 }
+viewConfig['utilities'] = {
+  back: true,
+  searchIcon: true,
+  searchBar: false,
+  done: false,
+  title: function () {
+    return 'Approximate Energy Cost'
+  }
+}
 viewConfig['violations'] = {
   back: true,
   searchIcon: true,
