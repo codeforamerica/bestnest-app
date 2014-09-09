@@ -210,6 +210,9 @@ button {
 .review .review-author {
   border-top:1px solid $borderColor;
 }
+.row.review .quote {
+  font-style:italic;
+}
 .row.review .quote, button {
   margin:0 auto;
   margin-left:auto;
