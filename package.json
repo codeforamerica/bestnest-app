@@ -55,6 +55,7 @@
     "del": "^0.1.1",
     "portfinder": "^0.2.1",
     "run-sequence": "^0.3.6",
-    "ampersand-state": "^4.3.9"
+    "ampersand-state": "^4.3.9",
+    "ampersand-view-switcher": "^1.0.4"
   }
 }
