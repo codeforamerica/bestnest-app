@@ -1,0 +1,11 @@
+@!(questionText, rel, values)
+<div class="row input-title">
+  <h2>@questionText</h2>
+</div>
+<div class="row">
+  <div class="button-group" rel="@rel">
+    @for (i in values) {
+      <button>@values[i]</button>
+    }
+  </div>
+</div>
