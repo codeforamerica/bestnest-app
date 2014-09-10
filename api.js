@@ -56,12 +56,24 @@ function mapHomeReponse(json) {
       }
       if (label === 'violations') {
         var summary = json[dataset].summary
-        structure.items = summary.map(function(item) {
-          return {
-            'text': item.caseType,
-            'description': item.description
-          }
-        })
+
+        console.log('vio-summary', summary.length)
+
+        if (summary.length != 0) {
+          structure.items = summary.map(function(item) {
+            return {
+              'text': item.caseType,
+              'description': item.description
+            }
+          })
+        }
+        else {
+          structure.items = [{
+            'text': 'This home has no code violations',
+            'description': ''
+          }]
+          structure.hasDetail = false
+        }
       }
       data.push(structure)
     }
