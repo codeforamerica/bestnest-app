@@ -29,7 +29,9 @@
             @{
               var firstReview = home.reviews[0].body
             }
-            <div class="quote">@firstReview</div>
+            <div class="quote">"@firstReview"</div>
+          } else {
+            <div class="quote"></div>
           }
         </a>
         <a href="#/homes/@home.id/reviews/new">
@@ -68,12 +70,6 @@
           @if (dataset.hasDetail) {
           </a>
           }
-        }
-        else {
-          <h2>@dataset.label</h2>
-          <ul>
-            <li>There are no @dataset.label.toLowerCase() for this property</li>
-          </ul>
         }
         <div class="border"></div>
       </div>

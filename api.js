@@ -5,24 +5,18 @@ var HomeModel = require('./models/home')
 
 var root = 'http://api.bestnestapp.com/'
 //var root = 'http://localhost:9001/'
-var demoMode = true
 
 var labels = {
   'utility_estimates': 'utilities',
   'violations': 'violations',
-  'schools': 'schools'
 }
 var hasDetail = {
   'utilities': false,
   'violations': true,
-  'schools': false,
-  'transit': false
 }
 var order = {
   'utilities': 1,
   'violations': 2,
-  'schools': 3,
-  'transit': 4
 }
 
 function formatPhone(number) {
@@ -49,23 +43,23 @@ function mapHomeReponse(json) {
       reviews = json['comments']
     }
     else if (dataset === 'userContent') {
-      
       userContent = json['userContent']
     }
     else {
       var label = labels[dataset]
-      if (label !== undefined) {
-        structure = {
-          'id': label,
-          'label': label,
-          'hasDetail': hasDetail[label],
-          'order': order[label],
-          'items': []
-        }
-        if (label === 'utilities') {
-        }
-        else if (label === 'violations') {
-          var summary = json[dataset].summary
+      structure = {
+        'id': label,
+        'label': label,
+        'hasDetail': hasDetail[label],
+        'order': order[label],
+        'items': []
+      }
+      if (label === 'violations') {
+        var summary = json[dataset].summary
+
+        console.log('vio-summary', summary.length)
+
+        if (summary.length != 0) {
           structure.items = summary.map(function(item) {
             return {
               'text': item.caseType,
@@ -73,38 +67,27 @@ function mapHomeReponse(json) {
             }
           })
         }
-        else if (label === 'schools') {
-          var schools = json[dataset]
-          structure.items = [
-            schools['elementary'],
-            schools['middle'],
-            schools['high']
-          ]
+        else {
+          structure.items = [{
+            'text': 'This home has no code violations',
+            'description': ''
+          }]
+          structure.hasDetail = false
         }
-
-        data.push(structure)
       }
+      data.push(structure)
     }
   }
 
-  if (demoMode) {
-    var labelsWithData = data.map(function(item) {
-      return item.label
-    })
+  data.push({
+    'id': 'utilities',
+    'label': 'Utility Cost Estimates',
+    'hasDetail': true,
+    'order': 1,
+    'items': ['Annual cost of energy usage']
+  })
 
-    Object.keys(order).map(function(label) {
-      if (_.contains(labelsWithData, label) != true) {
-        structure = {
-          'id': label,
-          'label': label,
-          'hasDetail': hasDetail[label],
-          'order': order[label],
-          'items': ['dataset has yet to be loaded']
-        }
-        data.push(structure)
-      }
-    })
-  }
+  console.log('data', data)
 
   return {
     'reviews': reviews,
