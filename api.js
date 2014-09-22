@@ -3,7 +3,7 @@ var _ = require('underscore')
 
 var HomeModel = require('./models/home')
 
-var root = 'http://dev.api.bestnestapp.com/'
+var root = 'http://api.bestnestapp.com/'
 //var root = 'http://localhost:9001/'
 var demoMode = true
 
