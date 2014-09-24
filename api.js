@@ -13,7 +13,7 @@ var labels = {
   'schools': 'schools'
 }
 var hasDetail = {
-  'utilities': false,
+  'utilities': true,
   'violations': true,
   'schools': false,
   'transit': false
