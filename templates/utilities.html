@@ -1,44 +1,23 @@
-@!(home)
+@!(energyData)
 
-  
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron yellow-color text-center">
       <div class="container">
-        <h1>$131</h1>
+        @{
+          var yearlyCost = energyData.energyUsage.cost
+          var monthlyCost = yearlyCost / 12
+        }
+        <h1>$@monthlyCost.toFixed(2)</h1>
         <p>monthly estimated total</p>
       </div>
     </div>
-    <!-- table with detailed cost breakdown 
-    <div>
-        <table class="table">
-          <tr>
-            <td>Heating</td>
-            <td>40</td>
-          </tr>
-          <tr>
-            <td>Cooling</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>Hot Water</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>Appliances</td>
-            <td>26</td>
-          </tr>
-          <tr>
-            <td>Lighting</td>
-            <td>18</td>
-          </tr>
-        </table>
-    </div> -->
 
     <div class="container">
        <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" style="text-align:center;">
           <h2>For more details call EPB</h2>
-          <p><a class="red-link" href="tel:423-648-1372">423-648-1372</a></p>
+          <p><a class="red-link" href="tel:423-648-1372" style="font-size:1.7em;">423-648-1372</a></p>
           <p>Ask EPB for more information about the utility costs at this property and mention that you'd like EPB to open energy data so it can appear in BestNest.</p>
         </div>
       </div>

@@ -3,6 +3,8 @@ var fs = require('fs')
 var $ = require('jquery')
 var bliss = new (require('bliss'))
 
+var api = require('../api')
+
 var template = bliss.compile(fs.readFileSync(__dirname +'/../templates/utilities.html','utf8'))
 
 var UtilitiesView = AmpersandView.extend({
@@ -11,10 +13,13 @@ var UtilitiesView = AmpersandView.extend({
   },
   render: function(homeId) {
     var view = this
-    view.homeId = homeId
     view.el = view.el || document.createElement('div')
-    var html = template()
-    return $(view.el).html(html)
+
+    return api.getEnergyData(homeId)
+      .then(function (energy) {
+        var html = template(energy)
+        $(view.el).html(html)
+      })
   }
 })
 
