@@ -3,7 +3,7 @@ var _ = require('underscore')
 
 var HomeModel = require('./models/home')
 
-var root = 'http://dev.api.bestnestapp.com/'
+var root = 'http://api.bestnestapp.com/'
 //var root = 'http://localhost:9001/'
 var demoMode = true
 
@@ -49,7 +49,7 @@ function mapHomeReponse(json) {
       reviews = json['comments']
     }
     else if (dataset === 'userContent') {
-      
+
       userContent = json['userContent']
     }
     else {
@@ -134,6 +134,15 @@ function getHome(id) {
     .then(handleHomeReponse)
 }
 
+function handleEnergyReponse(json) {
+  return json
+}
+
+function getEnergyData(id) {
+  return fetch('homes/' + id + '/energy')
+    .then(handleEnergyReponse)
+}
+
 function handleCodeViolationReponse(json) {
   return json.data
 }
@@ -208,6 +217,7 @@ function postUserContent(homeId, model) {
   })
 }
 
+module.exports.getEnergyData = getEnergyData
 module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
