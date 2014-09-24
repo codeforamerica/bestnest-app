@@ -11,7 +11,7 @@ var labels = {
   'violations': 'violations',
 }
 var hasDetail = {
-  'utilities': false,
+  'utilities': true,
   'violations': true,
 }
 var order = {
@@ -117,6 +117,15 @@ function getHome(id) {
     .then(handleHomeReponse)
 }
 
+function handleEnergyReponse(json) {
+  return json
+}
+
+function getEnergyData(id) {
+  return fetch('homes/' + id + '/energy')
+    .then(handleEnergyReponse)
+}
+
 function handleCodeViolationReponse(json) {
   return json.data
 }
@@ -191,6 +200,7 @@ function postUserContent(homeId, model) {
   })
 }
 
+module.exports.getEnergyData = getEnergyData
 module.exports.getCodeViolations = getCodeViolations
 module.exports.getLandlord = getLandlord
 module.exports.getHome = getHome
