@@ -23,6 +23,7 @@
       </div>
       </div>
       <div class="desktop-col data">
+      <!--
       <div class="row main-review review">
         <a href="#/homes/@home.id/reviews">
           @if (home.reviews.length != 0) {
@@ -38,6 +39,7 @@
           <button>Share your tips about this rental</button>
         </a>
       </div>
+      -->
       @{
         home.data.sort(function (a, b) {
           return a.order - b.order
@@ -84,6 +86,8 @@
           <a href="tel:@home.owner.phonePlain">@home.owner.phoneFormatted</a>
         </a>
       </div>
+
+      <!--
       @{
         function handleUserContent(content) {
           if (content === undefined) {
@@ -116,6 +120,8 @@
           <button>Contribute Information</button>
         </a>
       </div>
+      -->
+
       </div>
     </div>
   </div>
