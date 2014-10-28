@@ -3,8 +3,8 @@ var _ = require('underscore')
 
 var HomeModel = require('./models/home')
 
-var root = 'http://api.bestnestapp.com/'
-//var root = 'http://localhost:9001/'
+//var root = 'http://api.bestnestapp.com/'
+var root = 'http://localhost:9001/'
 
 var labels = {
   'utility_estimates': 'utilities',
@@ -127,7 +127,10 @@ function getEnergyData(id) {
 }
 
 function handleCodeViolationReponse(json) {
-  return json.data
+  return json.data.sort(function(a, b) {
+    var aDate = new Date(a.dateEntered), bDate = new Date(b.dateEntered)
+    return bDate.getTime() - aDate.getTime()
+  })
 }
 
 function getCodeViolations(id) {
