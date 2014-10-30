@@ -238,6 +238,9 @@ button {
     width:90%;
   }
 }
+.row.violation {
+  border-bottom:1px solid $borderColor;
+}
 .row ul {
   list-style-type:none;
   padding-left:0;
