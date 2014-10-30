@@ -57,8 +57,6 @@ function mapHomeReponse(json) {
       if (label === 'violations') {
         var summary = json[dataset].summary
 
-        console.log('vio-summary', summary.length)
-
         if (summary.length != 0) {
           structure.items = summary.map(function(item) {
             return {
@@ -87,8 +85,6 @@ function mapHomeReponse(json) {
     'items': ['Annual cost of energy usage']
   })
 
-  console.log('data', data)
-
   return {
     'reviews': reviews,
     'userContent': userContent,
@@ -102,7 +98,6 @@ function handleHomeReponse(json) {
   var home = new HomeModel({
     id: json.id,
     address: json.address,
-    type: json.type || 'Single family home',
     reviews: data.reviews,
     userContent: data.userContent,
     data: data.data,
@@ -127,7 +122,14 @@ function getEnergyData(id) {
 }
 
 function handleCodeViolationReponse(json) {
-  return json.data
+  data = json.data.map(function(violation) {
+    violation['dateEntered'] = new Date(violation['dateEntered'])
+    violation['dateCorrected'] = new Date(violation['dateCorrected'])
+    return violation})
+
+  return data.sort(function(a, b) {
+    return b.dateEntered.getTime() - a.dateEntered.getTime()
+  })
 }
 
 function getCodeViolations(id) {

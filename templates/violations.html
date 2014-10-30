@@ -1,10 +1,51 @@
 @!(violations)
-<div class="container">
+<div class="container violations">
   @violations.map(function (violation) {
-  <div class="row">
-    <h2>@violation.caseType</h2>
-    <time>@violation.dateEntered</time>
-    <p class="violation-description">@violation.description</p>
+  @{
+
+    var dateCorrected = violation.dateCorrected.toLocaleDateString()
+    if (dateCorrected == 'Invalid Date') {
+      dateCorrected = 'Unknown date'
+    }
+  }
+  <div class="row violation">
+    <dl>
+      <dt>Case Type</dt>
+      <dd>@violation.caseType</dd>
+      <dt>Case Status</dt>
+      <dd class="@violation.caseStatus.toLowerCase()">@violation.caseStatus</dd>
+      <dt>Date Entered</dt>
+      <dd><time>@violation.dateEntered.toLocaleDateString()</time></dd>
+      <dt>Date Corrected</dt>
+      @{
+        var dateCorrected = violation.dateCorrected.toLocaleDateString(),
+            caseStatus = violation.caseStatus.toLowerCase()
+
+        if (dateCorrected == 'Invalid Date' && caseStatus != 'open') {
+          dateCorrected = 'Unknown date'
+        }
+        else if (caseStatus == 'open') {
+          dateCorrected = 'Case still open'
+        }
+      }
+      <dd><time>@dateCorrected</time></dd>
+      <dt>Violation Description</dt>
+      <dd>
+        <div>@violation.description</div>
+        @if (violation.extendedDescription =! 'NULL') {
+          <div>@violation.extendedDescription</div>
+        }
+      </dd>
+      <dt>Inspector comments</dt>
+      <dd>
+        @if (violation.comments != 'NULL') {
+          <span>@violation.comments<span>
+        }
+        else {
+          <span>The inspector did not leave any comments</span>
+        }
+      </dd>
+    </dl>
   </div>
   })
 </div>
