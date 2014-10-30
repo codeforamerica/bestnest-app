@@ -5,4 +5,4 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: bestnest-app-dev
+      appname: bestnest-app-prod
